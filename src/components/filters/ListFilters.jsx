@@ -1,24 +1,23 @@
-export default function ListFilters({ filterActual, changeFilter }) {
+import { FILTERS } from 'constants/filters';
 
-    const filters = [
-        'rpg',
-        'aventura',
-        'comedia',
-        'drama',
-        'duelos',
-        'terror',
-        'suspenso',
-        'supervivencia',
-        'guerra'
-    ];
+export default function ListFilters({ filterActual, changeFilter }) {
 
     return (
         <ul>
-            {filters.map(filter => (
+            {FILTERS.map(filter => (
                 <li key={filter}>
                     <button type="button" onClick={() => changeFilter(filter)}>
                         {filter}
-                        {filterActual === filter && <button type="button" onClick={() => changeFilter(null)}>X</button>}
+                        {filterActual === filter &&
+                            <button
+                                type="button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    changeFilter(null);
+                                }}
+                            >
+                                X
+                            </button>}
                     </button>
                 </li>
             ))}

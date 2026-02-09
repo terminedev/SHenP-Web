@@ -10,7 +10,7 @@ export default function ListCategories({ category }) {
 
     const [proyects, setProyects] = useState([]);
     const [filter, setFilter] = useState(null);
-    const filteredResults = useMemo(() => filterProjects(filter, proyects), [filter, setProyects, proyects]);
+    const filteredResults = useMemo(() => filterProjects(filter, proyects), [filter, proyects]);
 
     // Obtener proyectos por categoría y con un límite
 
