@@ -1,12 +1,9 @@
 import './App.css';
+import SpaRoutes from 'routes/SpaRoutes';
 
 function App() {
 
-  return (
-    <>
-      <h1>Proyecto Shenp</h1>
-    </>
-  )
+  return (<SpaRoutes />)
 }
 
 export default App;
