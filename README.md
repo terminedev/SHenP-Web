@@ -71,24 +71,33 @@ Herramientas que mejoran la experiencia del usuario en la web.
 
 ### 📋 Ficha Técnica Maestra (Actualizada)
 
-1. **Nombre del Proyecto:** Título oficial.
-2. **Estado:** *[NUEVO]* Define la situación actual del proyecto.
+0. **idProyect | ID del Proyecto:** Título oficial.
+1. **projectName | Nombre del Proyecto:** Título oficial.
+2. **status | Estado:** *[NUEVO]* Define la situación actual del proyecto.
 * *Ejemplos de valores:* Finalizado, En Emisión, Cancelado, En Pausa, Lost Media (Perdido), Próximamente.
-3. **Logotipo:** Imagen del título (PNG transparente).
-4. **Portada (Key Art):** Imagen principal vertical u horizontal.
-5. **Descripción:** Sinopsis de la trama o mecánica.
-6. **Autor:** Nombre/Nick del creador.
-7. **Link al Perfil del Autor:** Enlace interno o redes sociales.
-8. **Fecha de Lanzamiento:** Día/Mes/Año (o solo Año).
-9. **Género:** Acción, Aventura, Comedia, Terror, etc.
-10. **Galería:** Lista de imágenes (screenshots, arte, bocetos).
-11. **Link al Proyecto:** URL de descarga, video de YouTube, lector online, etc. *(Este campo puede ocultarse si el estado es "Lost Media" o "Próximamente").*
+3. **logoUrl | Logotipo:** Imagen del título (PNG transparente).
+4. **coverArtUrl | Portada (Key Art):** Imagen principal vertical u horizontal.
+5. **description | Descripción:** Sinopsis de la trama o mecánica.
+6. **authorName | Autor:** Nombre/Nick del creador.
+7. **authorProfileUrl | Link al Perfil del Autor:** Enlace interno o redes sociales.
+8. **releaseDate | Fecha de Lanzamiento:** Día/Mes/Año (o solo Año).
+9. **genre | Género:** Acción, Aventura, Comedia, Terror, etc.
+10. **gallery | Galería:** Lista de imágenes (screenshots, arte, bocetos).
+11. **projectUrl | Link al Proyecto:** URL de descarga, video de YouTube, lector online, etc. *(Este campo puede ocultarse si el estado es "Lost Media" o "Próximamente").*
 
 * **Etiquetas Visuales (Badges):** Podrías mostrar una pequeña etiqueta de color sobre la portada en el menú principal.
-* 🟢 **Finalizado:** Verde.
-* 🔵 **En Emisión:** Azul.
-* ⚫ **Lost Media:** Gris o Negro (con efecto de "glitch" quizás).
-* 🔴 **Cancelado:** Rojo.
+* 🟢 **completed | Finalizado:** Verde.
+* 🔵 **ongoing | En Emisión:** Azul.
+* ⚫ **lostMedia | Lost Media:** Gris o Negro (con efecto de "glitch" quizás).
+* 🔴 **cancelled | Cancelado:** Rojo.
 
 * **Distintos Filtros:**
-	* RPG, Aventura, Comedia, Drama, Duelos, Terror, Suspenso, Supervivencia, Guerra.
+rpg
+aventura
+comedia
+drama
+duelos
+terror
+suspenso
+supervivencia
+guerra
