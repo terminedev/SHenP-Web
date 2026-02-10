@@ -3,6 +3,7 @@ import Home from 'pages/Home';
 import Layout from 'components/ui/Layout';
 import CompleteCatalog from "pages/CompleteCatalog";
 import LostProject from "pages/LostProject";
+import ProjectTemplate from 'pages/ProjectTemplate';
 
 export default function SpaRoutes() {
     return (
@@ -19,9 +20,13 @@ export default function SpaRoutes() {
 
                     <Route path="/proyectos-perdidos" element={<LostProject />} />
 
+                    <Route path="/proyecto">
+                        <Route index element={<Navigate to={"/"} replace />} />
+                        <Route path=":idProyect" element={<ProjectTemplate />} />
+                    </Route>
+
                     {/* 404 */}
                     <Route path="*" element={<Navigate to={'/'} replace />} />
-
                 </Route>
             </Routes>
         </BrowserRouter>

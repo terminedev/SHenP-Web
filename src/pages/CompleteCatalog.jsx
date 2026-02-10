@@ -7,7 +7,7 @@ export default function CompleteCatalog() {
     const { nameCategory } = useParams();
 
     const actualCategory = CATEGORIES.find(category => category.nameCategory === nameCategory);
-    if (!actualCategory) return <Navigate to={'/catalogo/series'} />
+    if (!actualCategory) return <Navigate to={'/catalogo/series'} replace />
 
     // Función de obtener proyectos por catalogo.
 
