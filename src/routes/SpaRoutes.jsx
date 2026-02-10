@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from 'pages/Home';
+import Layout from 'components/ui/Layout';
 import CompleteCatalog from "pages/CompleteCatalog";
 
 export default function SpaRoutes() {
@@ -12,11 +13,7 @@ export default function SpaRoutes() {
 
                     <Route path="/catalogo">
                         <Route index element={<Navigate to={"series"} replace />} />
-
-                        <Route path="series" element={<CompleteCatalog />} />
-                        <Route path="comics" element={<CompleteCatalog />} />
-                        <Route path="libros" element={<CompleteCatalog />} />
-                        <Route path="juegos" element={<CompleteCatalog />} />
+                        <Route path=":nameCategory" element={<CompleteCatalog />} />
                     </Route>
 
                     {/* 404 */}

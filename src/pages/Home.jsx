@@ -1,6 +1,10 @@
-import FeaturedProducts from 'components/ui/FeaturedProducts';
+import { CATEGORIES } from 'constants/categories';
+import ListCategories from 'components/categories/ListCategories';
 
 export default function Home() {
+
+    // Función de obtener proyectos por catalogo con límite.
+
     return (
         <>
             <section>
@@ -12,7 +16,19 @@ export default function Home() {
                     ¡Bienvenido a Shenp!
                 </p>
             </section>
-            <FeaturedProducts />
+
+            <section>
+                <button type="button">▾ Explora nuestro catálogo ▾</button>
+                {
+                    <ul>
+                        {CATEGORIES.map(category =>
+                            <li key={category.nameCategory}>
+                                <ListCategories category={category} allowFiltering={false} />
+                            </li>
+                        )}
+                    </ul>
+                }
+            </section>
         </>
     );
 };

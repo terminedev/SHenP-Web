@@ -1,35 +1,38 @@
-import { useMemo, useState } from "react";
-import ListFilters from 'components/filters/ListFilters';
+import { useState } from "react";
+import FilteredList from 'components/filters/FilteredList';
 import ProjectCard from 'components/proyects/ProjectCard';
-import { filterProjects } from 'functions/filters';
 import { Link } from "react-router-dom";
 
-export default function ListCategories({ category }) {
+export default function ListCategories({ category, allowFiltering = true, asynchronousFunction = () => { } }) {
 
     const { nameCategory } = category;
-
     const [proyects, setProyects] = useState([]);
-    const [filter, setFilter] = useState(null);
-    const filteredResults = useMemo(() => filterProjects(filter, proyects), [filter, proyects]);
 
-    // Obtener proyectos por categoría y con un límite
+
 
     return (
-        <li key={nameCategory}>
-
+        <>
             <h2>{nameCategory}</h2>
-            <ListFilters filterActual={filter} changeFilter={setFilter} />
 
             {
-                filteredResults.length > 0
+                allowFiltering
                     ?
-                    <ul>
-                        {filteredResults.map(proyect => <ProjectCard proyect={proyect} />)}
-                        <li key={`ver-mas-${nameCategory}`}><Link to={`/proyectos/${nameCategory}`}>Ver más</Link></li>
-                    </ul>
-                    : <p>No hay proyectos</p>
+                    <FilteredList
+                        proyects={proyects}
+                        nameCategory={nameCategory}
+                    />
+                    :
+                    (
+                        proyects.length > 0
+                            ?
+                            <ul>
+                                {proyects.map(proyect => <li key={proyect.id}><ProjectCard proyect={proyect} /></li>)}
+                                <li><Link to={`/proyectos/${nameCategory}`}>Ver más</Link></li>
+                            </ul>
+                            :
+                            <p>No hay proyectos.</p>
+                    )
             }
-
-        </li>
+        </>
     );
 };
