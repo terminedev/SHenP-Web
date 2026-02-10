@@ -4,6 +4,7 @@ import Layout from 'components/ui/Layout';
 import CompleteCatalog from "pages/CompleteCatalog";
 import LostProject from "pages/LostProject";
 import ProjectTemplate from 'pages/ProjectTemplate';
+import Personalization from "pages/Personalization";
 
 export default function SpaRoutes() {
     return (
@@ -24,6 +25,8 @@ export default function SpaRoutes() {
                         <Route index element={<Navigate to={"/"} replace />} />
                         <Route path=":idProyect" element={<ProjectTemplate />} />
                     </Route>
+
+                    <Route path="/personalizacion" element={<Personalization />} />
 
                     {/* 404 */}
                     <Route path="*" element={<Navigate to={'/'} replace />} />
