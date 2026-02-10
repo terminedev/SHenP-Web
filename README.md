@@ -22,7 +22,7 @@ Secciones dedicadas para filtrar el contenido según el formato:
 > "10 años haciendo historias. Series hechas en Paint, dibujamos por pasión. Entre amigos, forjamos mundos desde la imaginación, donde la creatividad y la diversión se entrelazan en series, juegos, cómics, entre otros medios originales. ¡Bienvenido a Shenp!"
 
 #### **D. Proyectos Perdidos (Lost Media)**
-
+> "Homenaje a los proyectos perdidos que no pudieron ser recuperados."
 ---
 
 ### 📄 3. Plantillas de Contenido (Fichas Técnicas)
@@ -34,10 +34,10 @@ Cada vez que entras a un juego, serie o cómic, verás:
 
 * **Cabecera:** Logotipo y Portada del proyecto.
 * **Información Clave:**
-* Nombre del proyecto.
-* Autor (con link a su perfil).
-* Fecha de lanzamiento.
-* Género.
+* **Nombre del proyecto.**
+* **Autor** (con link a su perfil).
+* **Fecha de lanzamiento.**
+* **Género.**
 * **Sinopsis:** Descripción detallada de la trama o mecánica.
 * **Visuales:** Galería de imágenes (screenshots, arte conceptual).
 * **Acción:** **Link al proyecto** (Jugar, Leer, Ver).
