@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Link, Outlet } from "react-router-dom";
-import AdvancedSearch from './AdvancedSearch'; // Asumo la ruta relativa
+import AdvancedSearch from 'components/ui/AdvancedSearch';
+import Load from 'components/ui/Load';
 
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
@@ -37,7 +38,9 @@ export default function Layout() {
             </header>
 
             <main>
-                <Outlet context={{ theme, setTheme }} />
+                <Suspense fallback={<Load />}>
+                    <Outlet context={{ theme, setTheme }} />
+                </Suspense>
             </main>
 
             {openSidebar && <AdvancedSearch onClose={() => setOpenSidebar(false)} />}

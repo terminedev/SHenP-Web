@@ -1,10 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from 'pages/Home';
+import { lazy } from "react";
+
 import Layout from 'components/ui/Layout';
-import CompleteCatalog from "pages/CompleteCatalog";
-import LostProject from "pages/LostProject";
-import ProjectTemplate from 'pages/ProjectTemplate';
+import Home from 'pages/Home';
 import Personalization from "pages/Personalization";
+import Load from "../components/ui/Load";
+
+const CompleteCatalog = lazy(() => import("pages/CompleteCatalog"));
+const LostProject = lazy(() => import("pages/LostProject"));
+const ProjectTemplate = lazy(() => import("pages/ProjectTemplate"));
+
 
 export default function SpaRoutes() {
     return (
@@ -12,7 +17,7 @@ export default function SpaRoutes() {
             <Routes>
                 <Route element={<Layout />}>
 
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Load />} />
 
                     <Route path="/catalogo">
                         <Route index element={<Navigate to={"series"} replace />} />
@@ -27,6 +32,7 @@ export default function SpaRoutes() {
                     </Route>
 
                     <Route path="/personalizacion" element={<Personalization />} />
+
 
                     {/* 404 */}
                     <Route path="*" element={<Navigate to={'/'} replace />} />
