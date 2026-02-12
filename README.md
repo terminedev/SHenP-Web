@@ -72,18 +72,20 @@ Herramientas que mejoran la experiencia del usuario en la web.
 ### 📋 Ficha Técnica Maestra (Actualizada)
 
 0. **idProyect | ID del Proyecto:** Título oficial.
-1. **projectName | Nombre del Proyecto:** Título oficial.
-2. **status | Estado:** *[NUEVO]* Define la situación actual del proyecto.
-* *Ejemplos de valores:* Finalizado, En Emisión, Cancelado, En Pausa, Lost Media (Perdido), Próximamente.
-3. **logoUrl | Logotipo:** Imagen del título (PNG transparente).
-4. **coverArtUrl | Portada (Key Art):** Imagen principal vertical u horizontal.
-5. **description | Descripción:** Sinopsis de la trama o mecánica.
-6. **authorName | Autor:** Nombre/Nick del creador.
-7. **authorProfileUrl | Link al Perfil del Autor:** Enlace interno o redes sociales.
-8. **releaseDate | Fecha de Lanzamiento:** Día/Mes/Año (o solo Año).
-9. **genre | Género:** Acción, Aventura, Comedia, Terror, etc.
-10. **gallery | Galería:** Lista de imágenes (screenshots, arte, bocetos).
-11. **projectUrl | Link al Proyecto:** URL de descarga, video de YouTube, lector online, etc. *(Este campo puede ocultarse si el estado es "Lost Media" o "Próximamente").*
+1. **projectNameSearch | Nombre del Proyecto para la búsqueda:** Título oficial.
+2. **projectName | Nombre del Proyecto:** Título oficial.
+3. **status | Estado:** *[NUEVO]* Define la situación actual del proyecto.
+4. **logoUrl | Logotipo:** Imagen del título (PNG transparente).
+5. **coverArtUrl | Portada (Key Art):** Imagen principal vertical u horizontal.
+6. **introUrl | MiniPortada (Key Art):** Imagen mini vertical u horizontal.
+7. **description | Descripción:** Sinopsis de la trama o mecánica.
+8. **authorName | Autor:** Nombre/Nick del creador.
+9. **authorProfileUrl | Link al Perfil del Autor:** Enlace interno o redes sociales.
+10. **releaseDate | Fecha de Lanzamiento:** Día/Mes/Año (o solo Año).
+11. **genre | Género:** Acción, Aventura, Comedia, Terror, etc.
+12. **catalog | Catálogo:** Juego, serie, comic, etc...
+13. **gallery | Galería:** Lista de imágenes (screenshots, arte, bocetos).
+14. **projectUrl | Link al Proyecto:** URL de descarga, video de YouTube, lector online, etc. *(Este campo puede ocultarse si el estado es "Lost Media" o "Próximamente").*
 
 * **Etiquetas Visuales (Badges):** Podrías mostrar una pequeña etiqueta de color sobre la portada en el menú principal.
 * 🟢 **completed | Finalizado:** Verde.
@@ -101,3 +103,10 @@ terror
 suspenso
 supervivencia
 guerra
+entretenimiento
+demo
+informativo 
+explícito
+acción
+desafío
+

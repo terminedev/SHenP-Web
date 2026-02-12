@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
 
@@ -10,6 +10,8 @@ export default function CompleteCatalog() {
     if (!actualCategory) return <Navigate to={'/catalogo/series'} replace />
 
     // Función de obtener proyectos por catalogo.
+
+
 
     return (
         <section>
