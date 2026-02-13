@@ -1,7 +1,7 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
-// getProjectsByCatalog(nameCategory)
+import { getProjectsByCatalog } from 'utils/firebase/obtainings';
 
 export default function CompleteCatalog() {
 

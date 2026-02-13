@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-// searchProductsByName(query);
+import { searchProductsByName } from 'utils/firebase/obtainings';
 
 export default function AdvancedSearch({ onClose, searchFunction }) {
 
@@ -20,7 +19,12 @@ export default function AdvancedSearch({ onClose, searchFunction }) {
             try {
                 setAsynchronousData({ results: [], isLoading: true, error: null });
 
-                const data = await searchProductsByName(query);
+                const queryClean = query
+                    .trim()
+                    .toLocaleLowerCase()
+                    .replaceAll(' ', '-');
+
+                const data = await searchProductsByName(queryClean);
 
                 setAsynchronousData({ results: data, isLoading: false, error: null });
 
@@ -53,7 +57,6 @@ export default function AdvancedSearch({ onClose, searchFunction }) {
                             ? <ul>
                                 {results.map(proyect =>
                                     <li key={proyect.id}>
-                                        {/* Asegúrate que la ruta y propiedades coincidan con tu objeto */}
                                         <Link to={`/proyecto/${proyect.idProyect}`}>
                                             <p>{proyect.projectName}</p>
                                             {
@@ -68,7 +71,7 @@ export default function AdvancedSearch({ onClose, searchFunction }) {
                                 )}
                             </ul>
                             : (
-                                query.trim() !== '' && !error && <p>No hay resultados de búsqueda</p>
+                                query.trim() !== '' && <p>No hay resultados de búsqueda</p>
                             )
                     )
             }
@@ -79,3 +82,4 @@ export default function AdvancedSearch({ onClose, searchFunction }) {
         </div>
     );
 };
+

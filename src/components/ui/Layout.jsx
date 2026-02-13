@@ -1,5 +1,6 @@
 import { useState, useEffect, Suspense } from "react";
 import { Link, Outlet } from "react-router-dom";
+import Sidebar from 'components/ui/Sidebar';
 import AdvancedSearch from 'components/ui/AdvancedSearch';
 import Load from 'components/ui/Load';
 
@@ -43,7 +44,7 @@ export default function Layout() {
                 </Suspense>
             </main>
 
-            {openSidebar && <AdvancedSearch onClose={() => setOpenSidebar(false)} />}
+            {openSidebar && <Sidebar onClose={() => setOpenSidebar(false)} />}
             {openAdvancedSearch && <AdvancedSearch onClose={() => setOpenAdvancedSearch(false)} />}
         </>
     );

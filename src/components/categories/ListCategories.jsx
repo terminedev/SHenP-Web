@@ -56,7 +56,7 @@ export default function ListCategories({
                                     ?
                                     <ul>
                                         {proyects.map(proyect => <li key={proyect.id}><ProjectCard proyect={proyect} /></li>)}
-                                        <li><Link to={`/proyectos/${nameCategory}`}>Ver más</Link></li>
+                                        <li><Link to={`/catalogo/${nameCategory}`}>Ver más</Link></li>
                                     </ul>
                                     :
                                     <p>No hay proyectos.</p>

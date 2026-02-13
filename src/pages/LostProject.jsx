@@ -1,6 +1,5 @@
 import { useState } from "react"
-
-// getProjectsLost();
+import { getProjectsLost } from 'utils/firebase/obtainings';
 
 export default function LostProject() {
 

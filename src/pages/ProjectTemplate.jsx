@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-
-// getProject(idProyect);
+import { getProject } from 'utils/firebase/obtainings';
 
 export default function ProjectTemplate() {
     const { idProyect } = useParams();
 
-    if (idProyect.trim() !== '') return <Navigate to={'/'} replace />
+    if (!idProyect.trim()) return <Navigate to={'/'} replace />
 
     const [asynchronousData, setAsynchronousData] = useState({
         proyect: [],

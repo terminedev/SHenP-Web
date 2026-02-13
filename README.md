@@ -109,11 +109,3 @@ informativo
 explícito
 acción
 desafío
-
-
-
-// getProjectsByLimitedCategory
-// getProjectsByCatalog(nameCategory)
-// getProjectsLost()
-// getProject(idProyect)
-// searchProductsByName(query);

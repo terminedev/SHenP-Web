@@ -1,6 +1,6 @@
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
-// getProjectsByLimitedCategory
+import { getProjectsByLimitedCategory } from 'utils/firebase/obtainings';
 
 export default function Home() {
 
@@ -33,7 +33,7 @@ export default function Home() {
                 </button>
                 {
                     <ul>
-                        {CATEGORIES.map(category =>
+                        {CATEGORIES.map((category, index) =>
                             <li key={category.nameCategory}>
                                 <ListCategories
                                     category={category}
