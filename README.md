@@ -116,3 +116,4 @@ desafío
 // getProjectsByCatalog(nameCategory)
 // getProjectsLost()
 // getProject(idProyect)
+// searchProductsByName(query);

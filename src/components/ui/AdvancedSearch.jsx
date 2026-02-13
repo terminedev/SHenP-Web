@@ -1,23 +1,41 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function AdvancedSearch({ onClose }) {
+// searchProductsByName(query);
+
+export default function AdvancedSearch({ onClose, searchFunction }) {
 
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+
+    const [asynchronousData, setAsynchronousData] = useState({
+        results: [],
+        isLoading: false,
+        error: null,
+    });
 
     useEffect(() => {
-        if (query.trim() === '') return;
+        if (query.trim() === '') return setAsynchronousData({ results: [], isLoading: false, error: null });
 
         const debounceTimer = setTimeout(async () => {
+            try {
+                setAsynchronousData({ results: [], isLoading: true, error: null });
 
+                const data = await searchProductsByName(query);
+
+                setAsynchronousData({ results: data, isLoading: false, error: null });
+
+            } catch (error) {
+                setAsynchronousData({ results: [], isLoading: false, error: error });
+            }
         }, 700);
 
         return () => clearTimeout(debounceTimer);
-    }, [query]);
+    }, [query, searchFunction]);
+
+    const { results, isLoading, error } = asynchronousData;
 
     return (
         <div>
-
             <button type="button" onClick={onClose}>Cerrar buscador</button>
 
             <input
@@ -28,23 +46,35 @@ export default function AdvancedSearch({ onClose }) {
             />
 
             {
-                results.length > 0
-                    ?
-                    <ul>
-                        {results.map(proyect =>
-                            <li key={proyect.id}>
-                                <Link to={`/proyecto/${proyect.idProyect}`}>
-                                    <p>{proyect.projectName}</p>
-                                    {
-                                        proyect.coverArtUrl?.trim() !== '' && <img src={proyect.coverArtUrl} alt={`Portada del proyecto ${projectName ?? 'desconocido'}`} />
-                                    }
-                                </Link>
-                            </li>
-                        )
-                        }
-                    </ul>
-                    :
-                    <p>No hay resultados de búsqueda</p>
+                isLoading
+                    ? <p>Buscando proyectos...</p>
+                    : (
+                        results.length > 0
+                            ? <ul>
+                                {results.map(proyect =>
+                                    <li key={proyect.id}>
+                                        {/* Asegúrate que la ruta y propiedades coincidan con tu objeto */}
+                                        <Link to={`/proyecto/${proyect.idProyect}`}>
+                                            <p>{proyect.projectName}</p>
+                                            {
+                                                proyect.coverArtUrl?.trim() !== '' &&
+                                                <img
+                                                    src={proyect.coverArtUrl}
+                                                    alt={`Portada de ${proyect.projectName}`}
+                                                />
+                                            }
+                                        </Link>
+                                    </li>
+                                )}
+                            </ul>
+                            : (
+                                query.trim() !== '' && !error && <p>No hay resultados de búsqueda</p>
+                            )
+                    )
+            }
+
+            {
+                error && <p>{error.message}</p>
             }
         </div>
     );
