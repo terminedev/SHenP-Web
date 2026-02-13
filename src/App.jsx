@@ -1,4 +1,3 @@
-import './App.css';
 import SpaRoutes from 'routes/SpaRoutes';
 
 function App() {
