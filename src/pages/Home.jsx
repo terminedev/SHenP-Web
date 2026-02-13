@@ -1,9 +1,16 @@
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
+// getProjectsByLimitedCategory
 
 export default function Home() {
 
-    // Función de obtener proyectos por catalogo con límite.
+    const handleScroll = () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            left: 0,
+            behavior: 'smooth'
+        });
+    };
 
     return (
         <>
@@ -18,12 +25,21 @@ export default function Home() {
             </section>
 
             <section>
-                <button type="button">▾ Explora nuestro catálogo ▾</button>
+                <button
+                    type="button"
+                    onClick={handleScroll}
+                >
+                    ▾ Explora nuestro catálogo ▾
+                </button>
                 {
                     <ul>
                         {CATEGORIES.map(category =>
                             <li key={category.nameCategory}>
-                                <ListCategories category={category} allowFiltering={false} />
+                                <ListCategories
+                                    category={category}
+                                    allowFiltering={false}
+                                    asynchronousFunction={async () => getProjectsByLimitedCategory(category.nameCategory, 4)}
+                                />
                             </li>
                         )}
                     </ul>

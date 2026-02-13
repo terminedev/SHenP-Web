@@ -110,3 +110,7 @@ explícito
 acción
 desafío
 
+
+
+// getProjectsByLimitedCategory
+// getProjectsByCatalog(nameCategory)

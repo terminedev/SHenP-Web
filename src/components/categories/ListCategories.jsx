@@ -1,37 +1,72 @@
-import { useState } from "react";
-import FilteredList from 'components/filters/FilteredList';
-import ProjectCard from 'components/proyects/ProjectCard';
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ListCategories({ category, allowFiltering = true, asynchronousFunction = () => { } }) {
+import FilteredList from 'components/filters/FilteredList';
+import ProjectCard from 'components/proyects/ProjectCard';
+
+export default function ListCategories({
+    category,
+    allowFiltering = true,
+    asynchronousFunction = async () => { } }) {
 
     const { nameCategory } = category;
-    const [proyects, setProyects] = useState([]);
 
+    const [asynchronousData, setAsynchronousData] = useState({
+        proyects: [],
+        isLoading: false,
+        error: null,
+    });
 
+    useEffect(() => {
+        const getProyects = async () => {
+            try {
+                setAsynchronousData({ proyects: [], isLoading: true, error: null });
+
+                const proyects = await asynchronousFunction();
+
+                setAsynchronousData({ proyects: proyects, isLoading: false, error: null });
+            } catch (error) {
+                setAsynchronousData({ proyects: [], isLoading: false, error: error });
+            }
+        }
+
+        getProyects();
+    }, []);
+
+    const { proyects, isLoading, error } = asynchronousData;
 
     return (
         <>
             <h2>{nameCategory}</h2>
 
             {
-                allowFiltering
+                isLoading
                     ?
-                    <FilteredList
-                        proyects={proyects}
-                        nameCategory={nameCategory}
-                    />
+                    <p>Obteniendo proyectos...</p>
                     :
                     (
-                        proyects.length > 0
+                        allowFiltering
                             ?
-                            <ul>
-                                {proyects.map(proyect => <li key={proyect.id}><ProjectCard proyect={proyect} /></li>)}
-                                <li><Link to={`/proyectos/${nameCategory}`}>Ver más</Link></li>
-                            </ul>
+                            <FilteredList
+                                proyects={proyects}
+                            />
                             :
-                            <p>No hay proyectos.</p>
+                            (
+                                proyects.length > 0
+                                    ?
+                                    <ul>
+                                        {proyects.map(proyect => <li key={proyect.id}><ProjectCard proyect={proyect} /></li>)}
+                                        <li><Link to={`/proyectos/${nameCategory}`}>Ver más</Link></li>
+                                    </ul>
+                                    :
+                                    <p>No hay proyectos.</p>
+                            )
                     )
+
+            }
+            {
+                error &&
+                <p>{error.message}</p>
             }
         </>
     );

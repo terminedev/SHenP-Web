@@ -4,7 +4,6 @@ import { lazy } from "react";
 import Layout from 'components/ui/Layout';
 import Home from 'pages/Home';
 import Personalization from "pages/Personalization";
-import Load from "../components/ui/Load";
 
 const CompleteCatalog = lazy(() => import("pages/CompleteCatalog"));
 const LostProject = lazy(() => import("pages/LostProject"));
@@ -17,7 +16,7 @@ export default function SpaRoutes() {
             <Routes>
                 <Route element={<Layout />}>
 
-                    <Route path="/" element={<Load />} />
+                    <Route path="/" element={<Home />} />
 
                     <Route path="/catalogo">
                         <Route index element={<Navigate to={"series"} replace />} />

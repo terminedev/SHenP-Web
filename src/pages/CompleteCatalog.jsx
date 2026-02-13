@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
+// getProjectsByCatalog(nameCategory)
 
 export default function CompleteCatalog() {
 
@@ -8,10 +9,6 @@ export default function CompleteCatalog() {
 
     const actualCategory = CATEGORIES.find(category => category.nameCategory === nameCategory);
     if (!actualCategory) return <Navigate to={'/catalogo/series'} replace />
-
-    // Función de obtener proyectos por catalogo.
-
-
 
     return (
         <section>
@@ -33,8 +30,9 @@ export default function CompleteCatalog() {
                 {actualCategory.infoCategory}
                 <ListCategories
                     category={actualCategory}
+                    asynchronousFunction={async () => getProjectsByCatalog(actualCategory.nameCategory)}
                 />
             </main>
         </section>
     );
-};
+}; 
