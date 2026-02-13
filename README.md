@@ -114,3 +114,5 @@ desafío
 
 // getProjectsByLimitedCategory
 // getProjectsByCatalog(nameCategory)
+// getProjectsLost()
+// getProject(idProyect)
