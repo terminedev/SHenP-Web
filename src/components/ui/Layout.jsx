@@ -4,6 +4,9 @@ import Sidebar from 'components/ui/Sidebar';
 import AdvancedSearch from 'components/ui/AdvancedSearch';
 import Load from 'components/ui/Load';
 
+import layoutStyles from 'styles/structure/ui/Layout.module.css';
+import logoWeb from 'assets/default-customization/web-lg.png'
+
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
     return saved ? JSON.parse(saved) : { bgImage: "", opacity: 0.5, logo: "default" };
@@ -12,7 +15,6 @@ const getInitialTheme = () => {
 export default function Layout() {
 
     const [theme, setTheme] = useState(getInitialTheme);
-
     const [openSidebar, setOpenSidebar] = useState(false);
     const [openAdvancedSearch, setOpenAdvancedSearch] = useState(false);
 
@@ -20,25 +22,58 @@ export default function Layout() {
         localStorage.setItem("shenp-theme", JSON.stringify(theme));
     }, [theme]);
 
-
     return (
         <>
-            <header>
-                <Link to={'/'}>
-                    SP
-                </Link>
+            <header className={layoutStyles.header}>
 
-                <button type="button" onClick={() => setOpenSidebar(true)}>
-                    Menú
-                </button>
-                <button type="button" onClick={() => setOpenAdvancedSearch(true)}>
-                    Buscar
-                </button>
-                <Link to={'/personalizacion'}>Personalización</Link>
-                <small>Gastón Términe</small>
+                {/* GRUPO IZQUIERDO: Logo + Menú */}
+                <div className={layoutStyles.leftGroup}>
+                    <Link to={'/'}>
+                        <img
+                            src={logoWeb}
+                            alt="logo básico"
+                            className={layoutStyles.logoWeb}
+                        />
+                    </Link>
+
+                    <button
+                        type="button"
+                        onClick={() => setOpenSidebar(true)}
+                        className={layoutStyles.button}
+                    >
+                        Menú
+                    </button>
+                </div>
+
+                {/* GRUPO DERECHO: Buscador/Pers + Usuario */}
+                <div className={layoutStyles.rightGroup}>
+
+                    {/* Contenedor estilo "Input" */}
+                    <div className={layoutStyles.searchContainer}>
+                        <button
+                            type="button"
+                            onClick={() => setOpenAdvancedSearch(true)}
+                            className={layoutStyles.button}
+                        >
+                            BUSCAR
+                        </button>
+
+                        <span className={layoutStyles.separator}>|</span>
+
+                        <Link
+                            to={'/personalizacion'}
+                            className={layoutStyles.button}
+                        >
+                            PERSONALIZACIÓN
+                        </Link>
+                    </div>
+
+                    <small className={layoutStyles.userName}>Gastón Términe</small>
+                </div>
+
             </header>
 
-            <main>
+            <main className={layoutStyles.main}>
                 <Suspense fallback={<Load />}>
                     <Outlet context={{ theme, setTheme }} />
                 </Suspense>

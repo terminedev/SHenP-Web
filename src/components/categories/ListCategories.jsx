@@ -31,7 +31,7 @@ export default function ListCategories({
         }
 
         getProyects();
-    }, []);
+    }, [nameCategory]);
 
     const { proyects, isLoading, error } = asynchronousData;
 

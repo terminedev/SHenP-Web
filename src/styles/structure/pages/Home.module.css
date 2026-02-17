@@ -1,0 +1,127 @@
+/* Contenedor principal de la sección superior */
+.heroSection {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que el logo baje en móviles si no cabe */
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    min-height: 80vh;
+    /* Para que ocupe gran parte de la pantalla inicial */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Contenedor del texto (Izquierda) */
+.textContainer {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 2rem;
+}
+
+.textContainer p:first-child {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.textContainer h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
+
+/* Contenedor del Logo (Derecha) */
+.logoContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Sección del Botón */
+.catalogSection {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.scrollButton {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #000;
+    /* Estilo de la imagen */
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: transform 0.3s ease;
+}
+
+.scrollButton:hover {
+    transform: translateY(5px);
+}
+
+/* Lista de categorías */
+.categoryList {
+    list-style: none;
+    padding: 0;
+}
+
+/* Media Query para móviles */
+@media (max-width: 768px) {
+    .heroSection {
+        flex-direction: column-reverse;
+        /* El logo puede ir arriba en móvil si prefieres */
+        text-align: center;
+    }
+
+    .textContainer {
+        padding-right: 0;
+        margin-top: 2rem;
+    }
+}
+
+.categoryList li :global(ul),
+.categoryList li :global(.contenedor-de-tarjetas) {
+    display: flex !important;
+    /* Forzamos que se pongan en fila */
+    flex-direction: row !important;
+    /* Dirección horizontal */
+    flex-wrap: nowrap !important;
+    /* PROHIBIDO bajar a la siguiente línea */
+    overflow-x: auto;
+    /* Scroll horizontal si no caben */
+    overflow-y: hidden;
+    /* Sin scroll vertical */
+    gap: 20px;
+    /* Espacio entre tarjetas */
+    padding-bottom: 20px;
+    /* Espacio para que no se corte la sombra o scrollbar */
+
+    /* Experiencia de scroll suave y magnético */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* Para que vuele en móviles */
+
+    /* Opcional: Ocultar barra de scroll (estético) */
+    scrollbar-width: thin;
+}
+
+/* 2. Atacamos los ITEMS (las tarjetas) para que no se aplasten.
+   Asumimos que son <li> o <div> directos del contenedor anterior. */
+
+.categoryList li :global(ul)> :global(li),
+.categoryList li :global(.contenedor-de-tarjetas)> :global(div) {
+    flex: 0 0 auto;
+    /* NO crecer, NO encoger, tamaño automático */
+    width: 250px;
+    /* ANCHO FIJO OBLIGATORIO para que el scroll funcione */
+    min-width: 250px;
+    /* Refuerzo para navegadores antiguos */
+}

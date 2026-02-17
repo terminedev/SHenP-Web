@@ -1,0 +1,160 @@
+/* --- Contenedor Principal --- */
+.catalogContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555;
+}
+
+/* --- Navegación (Tabs Superiores) --- */
+.catalogHeader {
+    margin-bottom: 20px;
+}
+
+.catalogNav {
+    display: flex;
+    justify-content: center;
+    /* Centrado como en muchas apps, o usa flex-start */
+    gap: 40px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #777;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.navLink:hover,
+.activeLink {
+    color: #4a90e2;
+    /* El azul de tu imagen */
+    border-bottom: 3px solid #333;
+    /* La línea negra de "SERIES" en la imagen */
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+/* --- Área de Filtros (Los dos opciones arriba) --- */
+/* El usuario mencionó dos filtros que deben estar en fila */
+.filtersArea {
+    display: flex;
+    flex-direction: row;
+    /* En fila, uno al lado del otro */
+    justify-content: flex-start;
+    /* O space-between según prefieras */
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* --- La Grilla Responsiva --- */
+/* IMPORTANTE: Como no podemos tocar ListCategories, asumimos que devuelve
+   un contenedor con items. Usamos selectores profundos para forzar la grilla.
+*/
+
+.gridWrapper {
+    width: 100%;
+}
+
+/* Usamos :global para penetrar en ListCategories. 
+   Asumimos que ListCategories tiene un contenedor (ul o div) que envuelve las cards.
+   Si ListCategories devuelve un Fragment (<>...</>), aplicamos el grid directamente a .gridWrapper
+*/
+.gridWrapper> :global(div),
+.gridWrapper> :global(ul) {
+    display: grid;
+    gap: 20px;
+    /* Estrategia Mobile First: Empezamos con 2 columnas */
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Tablet: 3 columnas */
+@media (min-width: 768px) {
+
+    .gridWrapper> :global(div),
+    .gridWrapper> :global(ul) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop: 4 columnas (Como pediste) */
+@media (min-width: 1024px) {
+
+    .gridWrapper> :global(div),
+    .gridWrapper> :global(ul) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* --- Estilo de las Tarjetas (Simulando la imagen azul) --- */
+/* Esto intentará estilizar los items dentro de la lista. 
+   Ajusta los selectores (:first-child, etc) según la estructura real de tus cards.
+*/
+
+.gridWrapper> :global(div)> :global(div),
+.gridWrapper> :global(ul)> :global(li) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* Opcional: animación de entrada */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Simulando los bloques azules de la imagen para la Portada */
+.gridWrapper img,
+.gridWrapper :global(.portada) {
+    width: 100%;
+    aspect-ratio: 1/1;
+    /* Cuadrado como en la imagen */
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: #5b9bd5;
+    /* Azul placeholder de la imagen */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Simulando las barras de texto azules */
+.gridWrapper h3,
+.gridWrapper h4,
+.gridWrapper p {
+    background-color: #5b9bd5;
+    /* Azul de la imagen */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Diferenciación visual para el "Año" (segundo bloque de texto) */
+.gridWrapper p:last-child,
+.gridWrapper span {
+    background-color: #5b9bd5;
+    opacity: 0.8;
+    /* Un poco más suave */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
