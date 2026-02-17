@@ -6,6 +6,7 @@ import Load from 'components/ui/Load';
 
 import layoutStyles from 'styles/structure/ui/Layout.module.css';
 import logoWeb from 'assets/default-customization/web-lg.png'
+import { OpenSidebar, Personalize, Search } from "components/ui/SVGs";
 
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
@@ -26,7 +27,7 @@ export default function Layout() {
         <>
             <header className={layoutStyles.header}>
 
-                {/* GRUPO IZQUIERDO: Logo + Menú */}
+                {/* Grupo izquierdo: Logo + Menú */}
                 <div className={layoutStyles.leftGroup}>
                     <Link to={'/'}>
                         <img
@@ -41,11 +42,11 @@ export default function Layout() {
                         onClick={() => setOpenSidebar(true)}
                         className={layoutStyles.button}
                     >
-                        Menú
+                        <OpenSidebar className={layoutStyles.svg} />
                     </button>
                 </div>
 
-                {/* GRUPO DERECHO: Buscador/Pers + Usuario */}
+                {/* Grupo derecho: Buscador/Pers + Usuario */}
                 <div className={layoutStyles.rightGroup}>
 
                     {/* Contenedor estilo "Input" */}
@@ -55,7 +56,7 @@ export default function Layout() {
                             onClick={() => setOpenAdvancedSearch(true)}
                             className={layoutStyles.button}
                         >
-                            BUSCAR
+                            <Search className={layoutStyles.svg} />
                         </button>
 
                         <span className={layoutStyles.separator}>|</span>
@@ -64,11 +65,18 @@ export default function Layout() {
                             to={'/personalizacion'}
                             className={layoutStyles.button}
                         >
-                            PERSONALIZACIÓN
+                            <Personalize className={layoutStyles.svg} />
                         </Link>
                     </div>
 
-                    <small className={layoutStyles.userName}>Gastón Términe</small>
+                    <a
+                        href="https://github.com/terminedev"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={layoutStyles.userName}
+                    >
+                        Gastøn ♱érmine
+                    </a>
                 </div>
 
             </header>
@@ -79,7 +87,10 @@ export default function Layout() {
                 </Suspense>
             </main>
 
-            {openSidebar && <Sidebar onClose={() => setOpenSidebar(false)} />}
+            <Sidebar
+                isOpen={openSidebar}
+                onClose={() => setOpenSidebar(false)}
+            />
             {openAdvancedSearch && <AdvancedSearch onClose={() => setOpenAdvancedSearch(false)} />}
         </>
     );

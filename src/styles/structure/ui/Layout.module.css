@@ -5,14 +5,34 @@
     position: fixed;
     top: 0;
     z-index: 9999;
-    background-color: rgb(5, 5, 5);
-    border-bottom: 1px solid #ccc;
+    background: #3b1196;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+
+    border-bottom: 1px solid var(--text);
+    animation: color-change-3x 5s linear infinite alternate both;
+    text-decoration: none;
 }
+
+@keyframes color-change-3x {
+    0% {
+        background: #3b1196 0%
+    }
+
+    50% {
+        background: #1c1365 0%
+    }
+
+    100% {
+        background: #0a215b 100%
+    }
+}
+
+
+/* Grupo izquierdo: Logo + Menú */
 
 .leftGroup {
     display: flex;
@@ -20,60 +40,69 @@
     gap: 1.5rem;
 }
 
+.logoWeb {
+    width: 7rem;
+    height: auto;
+
+    margin-top: 50%;
+    display: block;
+    transition: all .2s ease;
+}
+
+.svg {
+    transition: all .2s ease;
+    width: 1.7rem;
+    height: 1.7rem;
+    fill: var(--primary-color);
+}
+
+.svg:hover,
+.logoWeb:hover {
+    transform: scale(1.1);
+    fill: var(--text);
+}
+
+
+
+/* Grupo derecho: Buscador/Pers + Usuario */
+
 .rightGroup {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
 
-.searchContainer {
-    display: flex;
-    align-items: center;
-    border: 1px solid #999;
-    /* El borde gris del recuadro */
-    padding: 0.3rem 0.5rem;
-    gap: 0.5rem;
-    background: white;
-}
-
-.separator {
-    color: #999;
-    user-select: none;
-}
-
-.logoWeb {
-    max-width: 3rem;
-    height: auto;
-    display: block;
-}
-
 .button {
     background: none;
     cursor: pointer;
     border: none;
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 0;
-    color: #000;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    gap: 1rem;
+}
+
+.separator {
+    color: var(--text);
+    user-select: none;
 }
 
 .userName {
-    font-size: 0.9rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
     white-space: nowrap;
+    color: var(--text);
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.userName:hover {
+    transform: scale(1.1);
 }
 
 .main {
     margin-top: 70px;
-}
-
-@media (max-width: 768px) {
-    .header {
-        padding: 0 1rem;
-    }
-
-    .userName {
-        display: none;
-    }
 }

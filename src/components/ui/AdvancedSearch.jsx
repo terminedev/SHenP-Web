@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { searchProductsByName } from 'utils/firebase/obtainings';
 
+import advancedSearchStyles from 'styles/structure/ui/AdvancedSearch.module.css';
+import { Loading } from 'components/ui/SVGs';
+
 export default function AdvancedSearch({ onClose, searchFunction }) {
 
     const [query, setQuery] = useState('');
@@ -39,47 +42,56 @@ export default function AdvancedSearch({ onClose, searchFunction }) {
     const { results, isLoading, error } = asynchronousData;
 
     return (
-        <div>
-            <button type="button" onClick={onClose}>Cerrar buscador</button>
+        <>
+            <div className={advancedSearchStyles.overlay} onClick={onClose} />
 
-            <input
-                type="search"
-                placeholder="Busca proyecto por nombre..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-            />
+            <div className={advancedSearchStyles.container}>
+                <input
+                    type="search"
+                    className={advancedSearchStyles.searchInput}
+                    placeholder="Busca proyecto por nombre..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    autoFocus
+                />
 
-            {
-                isLoading
-                    ? <p>Buscando proyectos...</p>
-                    : (
-                        results.length > 0
-                            ? <ul>
-                                {results.map(proyect =>
-                                    <li key={proyect.id}>
-                                        <Link to={`/proyecto/${proyect.idProyect}`}>
-                                            <p>{proyect.projectName}</p>
-                                            {
-                                                proyect.coverArtUrl?.trim() !== '' &&
+                <div className={advancedSearchStyles.resultsContainer}>
+                    {isLoading ? (
+                        <Loading className={advancedSearchStyles.loading} />
+                    ) : (
+                        results.length > 0 ? (
+                            <ul className={advancedSearchStyles.resultsList}>
+                                {results.map(proyect => (
+                                    <li key={proyect.id} className={advancedSearchStyles.resultItem}>
+                                        <Link
+                                            to={`/proyecto/${proyect.idProyect}`}
+                                            className={advancedSearchStyles.resultLink}
+                                            onClick={onClose}
+                                        >
+                                            <div className={advancedSearchStyles.infoContainer}>
+                                                <p className={advancedSearchStyles.projectTitle}>{proyect.projectName}</p>
+                                                <p className={advancedSearchStyles.projectCatalog}>{proyect.catalog}</p>
+                                            </div>
+
+                                            {proyect.coverArtUrl?.trim() !== '' && (
                                                 <img
                                                     src={proyect.coverArtUrl}
                                                     alt={`Portada de ${proyect.projectName}`}
+                                                    className={advancedSearchStyles.coverImage}
                                                 />
-                                            }
+                                            )}
                                         </Link>
                                     </li>
-                                )}
+                                ))}
                             </ul>
-                            : (
-                                query.trim() !== '' && <p>No hay resultados de búsqueda</p>
-                            )
-                    )
-            }
+                        ) : (
+                            query.trim() !== '' && <p className={advancedSearchStyles.statusMessage}>No hay resultados de búsqueda</p>
+                        )
+                    )}
 
-            {
-                error && <p>{error.message}</p>
-            }
-        </div>
+                    {error && <p className={advancedSearchStyles.errorMessage}>{error.message}</p>}
+                </div>
+            </div>
+        </>
     );
 };
-
