@@ -29,7 +29,7 @@ export default function Layout() {
 
                 {/* Grupo izquierdo: Logo + Menú */}
                 <div className={layoutStyles.leftGroup}>
-                    <Link to={'/'}>
+                    <Link to={'/'} onClick={() => setOpenAdvancedSearch(false)}>
                         <img
                             src={logoWeb}
                             alt="logo básico"
@@ -39,7 +39,10 @@ export default function Layout() {
 
                     <button
                         type="button"
-                        onClick={() => setOpenSidebar(true)}
+                        onClick={() => {
+                            setOpenSidebar(true)
+                            setOpenAdvancedSearch(false)
+                        }}
                         className={layoutStyles.button}
                     >
                         <OpenSidebar className={layoutStyles.svg} />
@@ -64,6 +67,7 @@ export default function Layout() {
                         <Link
                             to={'/personalizacion'}
                             className={layoutStyles.button}
+                            onClick={() => setOpenAdvancedSearch(false)}
                         >
                             <Personalize className={layoutStyles.svg} />
                         </Link>

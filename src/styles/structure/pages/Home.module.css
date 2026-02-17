@@ -1,127 +1,177 @@
-/* Contenedor principal de la sección superior */
-.heroSection {
+.home {
+    width: 100%;
+    height: auto;
+
     display: flex;
-    flex-wrap: wrap;
-    /* Permite que el logo baje en móviles si no cabe */
     align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    min-height: 80vh;
-    /* Para que ocupe gran parte de la pantalla inicial */
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: start;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 0px 2rem;
 }
 
-/* Contenedor del texto (Izquierda) */
-.textContainer {
-    flex: 1;
-    min-width: 300px;
-    padding-right: 2rem;
+/* Portada principal */
+
+.mainCover {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* CAMBIO: Usar 100vh para asegurar que ocupe toda la pantalla inicial */
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    /* Necesario para que el botón absoluto se posicione respecto a esto */
+    overflow: hidden;
 }
 
-.textContainer p:first-child {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.textContainer h1 {
-    font-size: 2.5rem;
-    margin: 1rem 0;
-}
-
-/* Contenedor del Logo (Derecha) */
 .logoContainer {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 300px;
+    display: block;
+    position: relative;
+    height: 60vh;
+    width: 100%;
+}
+
+.coverCharacter {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    width: 70%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    z-index: 1;
+    animation: slide-in-bl 1.5s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 .logo {
-    max-width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 40%;
+    max-width: 250px;
     height: auto;
     object-fit: contain;
+    z-index: 2;
+    animation: slide-in-tr 1.5s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
-/* Sección del Botón */
+@keyframes slide-in-bl {
+    0% {
+        transform: translateY(100px) translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-tr {
+    0% {
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/*  Info principal   */
+
+.heroSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 3rem;
+    z-index: 10;
+    text-align: start;
+    max-width: 600px;
+    animation: slide-in-bck-right .6s cubic-bezier(.25, .46, .45, .94) both;
+}
+
+.heroSection p:first-child {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.heroSection h1 {
+    font-size: var(--fs-h1);
+    margin: 1rem 0;
+    line-height: 1.1;
+}
+
+@keyframes slide-in-bck-right {
+    0% {
+        transform: translateZ(700px) translateX(400px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateZ(0) translateX(0);
+        opacity: 1
+    }
+}
+
+
 .catalogSection {
     text-align: center;
-    padding: 2rem 0;
+    margin: 2rem 0px;
+    position: relative;
 }
 
 .scrollButton {
     background: transparent;
     border: none;
-    border-bottom: 2px solid #000;
-    /* Estilo de la imagen */
-    font-size: 1.2rem;
+
+    font-size: var(--fs-h4);
     letter-spacing: 4px;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 10px 20px;
     transition: transform 0.3s ease;
+    padding-bottom: 2rem;
+    animation: shake-vertical 4s cubic-bezier(.455, .03, .515, .955) both infinite;
 }
 
 .scrollButton:hover {
     transform: translateY(5px);
 }
 
-/* Lista de categorías */
-.categoryList {
-    list-style: none;
-    padding: 0;
-}
+@keyframes shake-vertical {
 
-/* Media Query para móviles */
-@media (max-width: 768px) {
-    .heroSection {
-        flex-direction: column-reverse;
-        /* El logo puede ir arriba en móvil si prefieres */
-        text-align: center;
+    0%,
+    100% {
+        transform: translateY(0)
     }
 
-    .textContainer {
-        padding-right: 0;
-        margin-top: 2rem;
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateY(-8px)
     }
-}
 
-.categoryList li :global(ul),
-.categoryList li :global(.contenedor-de-tarjetas) {
-    display: flex !important;
-    /* Forzamos que se pongan en fila */
-    flex-direction: row !important;
-    /* Dirección horizontal */
-    flex-wrap: nowrap !important;
-    /* PROHIBIDO bajar a la siguiente línea */
-    overflow-x: auto;
-    /* Scroll horizontal si no caben */
-    overflow-y: hidden;
-    /* Sin scroll vertical */
-    gap: 20px;
-    /* Espacio entre tarjetas */
-    padding-bottom: 20px;
-    /* Espacio para que no se corte la sombra o scrollbar */
+    20%,
+    40%,
+    60% {
+        transform: translateY(8px)
+    }
 
-    /* Experiencia de scroll suave y magnético */
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    /* Para que vuele en móviles */
+    80% {
+        transform: translateY(6.4px)
+    }
 
-    /* Opcional: Ocultar barra de scroll (estético) */
-    scrollbar-width: thin;
-}
-
-/* 2. Atacamos los ITEMS (las tarjetas) para que no se aplasten.
-   Asumimos que son <li> o <div> directos del contenedor anterior. */
-
-.categoryList li :global(ul)> :global(li),
-.categoryList li :global(.contenedor-de-tarjetas)> :global(div) {
-    flex: 0 0 auto;
-    /* NO crecer, NO encoger, tamaño automático */
-    width: 250px;
-    /* ANCHO FIJO OBLIGATORIO para que el scroll funcione */
-    min-width: 250px;
-    /* Refuerzo para navegadores antiguos */
+    90% {
+        transform: translateY(-6.4px)
+    }
 }
