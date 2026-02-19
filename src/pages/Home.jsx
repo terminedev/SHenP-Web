@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'; // Importar hooks
 import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
 import { getProjectsByLimitedCategory } from 'utils/firebase/obtainings';
@@ -7,12 +8,29 @@ import logoWeb from 'assets/default-customization/web-lg.png'
 import coverCharacter from 'assets/main-cover/cover-character.png';
 
 export default function Home() {
+    const [showButton, setShowButton] = useState(true);
+
+    // 2. Lógica para ocultar el botón al hacer scroll
+    useEffect(() => {
+        const handleVisibility = () => {
+            // Si baja más de 100px, oculta el botón
+            if (window.scrollY > 100) {
+                setShowButton(false);
+            } else {
+                setShowButton(true);
+            }
+        };
+
+        window.addEventListener('scroll', handleVisibility);
+        return () => window.removeEventListener('scroll', handleVisibility);
+    }, []);
+
     const handleScroll = () => {
-        window.scrollTo({
-            top: window.innerHeight,
-            left: 0,
-            behavior: 'smooth'
-        });
+        // Scrollear hacia la sección del catálogo
+        const catalogSection = document.getElementById('catalog-section');
+        if (catalogSection) {
+            catalogSection.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
@@ -44,18 +62,20 @@ export default function Home() {
                         cómics, entre otros medios originales. ¡Bienvenido a Shenp!
                     </p>
                 </section>
-            </div>
 
-            {/* Sección del Catálogo */}
-            <section className={homeStyle.catalogSection}>
+                {/* MOVIDO: El botón ahora vive aquí adentro para estar en la pantalla inicial */}
                 <button
                     type="button"
                     onClick={handleScroll}
-                    className={homeStyle.scrollButton}
+                    className={`${homeStyle.scrollButton} ${!showButton ? homeStyle.hidden : ''}`}
                 >
                     ▾ EXPLORA NUESTRO CATÁLOGO ▾
                 </button>
+            </div>
 
+            {/* Sección del Catálogo */}
+            {/* Agregamos ID para el scroll target */}
+            <section id="catalog-section" className={homeStyle.catalogSection}>
                 <ul className={homeStyle.categoryList}>
                     {CATEGORIES.map((category) => (
                         <li key={category.nameCategory}>
@@ -63,6 +83,7 @@ export default function Home() {
                                 category={category}
                                 allowFiltering={false}
                                 asynchronousFunction={async () => getProjectsByLimitedCategory(category.nameCategory, 4)}
+                                customClass={homeStyle.projectsRow}
                             />
                         </li>
                     ))}

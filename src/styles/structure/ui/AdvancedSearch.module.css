@@ -129,13 +129,13 @@
 .statusMessage {
     margin-top: 5rem;
     text-align: center;
-    color: var(--#94FF8A);
+    color: var(--information);
 }
 
 .errorMessage {
     margin-top: 5rem;
     text-align: center;
-    color: var(--#FF0077);
+    color: var(--error);
 }
 
 .loading {

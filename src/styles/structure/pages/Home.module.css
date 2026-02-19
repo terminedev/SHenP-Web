@@ -133,14 +133,38 @@
 .scrollButton {
     background: transparent;
     border: none;
-
     font-size: var(--fs-h4);
     letter-spacing: 4px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.3s ease;
-    padding-bottom: 2rem;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    /* Agregamos transición de opacidad */
+
+    /* --- CAMBIOS CLAVE --- */
+    position: absolute;
+    /* Lo saca del flujo normal (flex) */
+    bottom: 7rem;
+    /* Lo pega al fondo (ajusta este valor a gusto) */
+    left: 0;
+    right: 0;
+    /* Left 0 + Right 0 + Margin auto = Centrado horizontal */
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    /* Para que el margin auto funcione bien */
+    z-index: 20;
+    /* Asegura que esté por encima de todo */
+    /* --------------------- */
+
+    /* Tu animación original se mantiene */
     animation: shake-vertical 4s cubic-bezier(.455, .03, .515, .955) both infinite;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    /* Evita clicks cuando es invisible */
+    cursor: default;
 }
 
 .scrollButton:hover {
@@ -174,4 +198,116 @@
     90% {
         transform: translateY(-6.4px)
     }
+}
+
+/* --- Sección del Catálogo --- */
+
+.catalogSection {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* Centra la lista en el medio de la pantalla */
+    padding: 4rem 1.5rem;
+    /* Espaciado superior/inferior y lateral */
+    min-height: 50vh;
+    /* Asegura que tenga altura aunque cargue lento */
+}
+
+.categoryList {
+    list-style: none;
+    /* Elimina los puntos (bullets) por defecto */
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+    max-width: 1200px;
+    /* Limita el ancho en pantallas muy grandes para que se vea elegante */
+
+    display: flex;
+    flex-direction: column;
+    /* Mantiene el orden de arriba hacia abajo */
+    gap: 5rem;
+    /* ESPACIO CLAVE: Separación grande entre cada categoría */
+}
+
+/* Opcional: Estilo para cada item de la lista (el contenedor de ListCategories) */
+.categoryList>li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fade-in-up 0.8s ease-out both;
+}
+
+/* Animación opcional para que aparezcan suavemente */
+.categoryList li {
+    animation: fade-in-up 0.8s ease-out both;
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.projectsRow {
+    display: flex;
+    flex-direction: row;
+    /* Fuerza la dirección horizontal */
+    flex-wrap: wrap;
+    /* Permite que bajen si la pantalla es muy pequeña */
+    justify-content: center;
+    /* Centra las tarjetas en el medio */
+    align-items: center;
+    /* Alineación vertical */
+    gap: 1.5rem;
+    /* Espacio entre tarjetas */
+
+    list-style: none;
+    /* Quita los puntos de la lista */
+    padding: 0;
+    width: 100%;
+}
+
+/* Opcional: Estilo para los ítems de la lista (las tarjetas) */
+.projectsRow li {
+    display: flex;
+    justify-content: center;
+    /* AGREGA ESTO: */
+    width: auto;
+    max-width: 300px;
+    /* O el ancho que desees para tus tarjetas */
+}
+
+/* Opcional: Estilo simple para el enlace de "Ver más" para que no se vea feo al lado de las cards */
+.projectsRow .see-more-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    /* Ajusta esto a la altura de tus cards */
+    padding: 1rem;
+}
+
+.projectsRow .see-more-item a {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    /* O el color que uses en tu app */
+    border: 2px solid currentColor;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.projectsRow .see-more-item a:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
