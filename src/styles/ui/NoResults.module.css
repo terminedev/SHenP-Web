@@ -1,0 +1,37 @@
+.container {
+    width: 270px;
+    height: 135px;
+    border-radius: 7px;
+
+    background-image: url('assets/no-results/no-results-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 7px var(--secondary-color);
+}
+
+.messageImage {
+    max-width: 80%;
+    height: auto;
+
+    filter: drop-shadow(0px 7px 7px rgba(0, 0, 0, 0.5));
+    animation: blink-1 2s both infinite;
+}
+
+@keyframes blink-1 {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1
+    }
+
+    25%,
+    75% {
+        opacity: 0
+    }
+}
