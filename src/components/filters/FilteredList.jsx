@@ -2,8 +2,11 @@ import { useState, useMemo } from "react";
 import ListFilters from 'components/filters/ListFilters';
 import ProjectCard from 'components/proyects/ProjectCard';
 import { filterProjects } from 'utils/filters';
+import NoResults from 'components/ui/NoResults';
 
-export default function FilteredList({ proyects }) {
+import filteredListStyles from 'styles/components/FilteredList.module.css';
+
+export default function FilteredList({ proyects = [] }) {
 
     const [filter, setFilter] = useState({
         gender: null,
@@ -18,14 +21,23 @@ export default function FilteredList({ proyects }) {
     return (
         <>
             <ListFilters filterActual={filter} changeFilter={setFilter} />
+
             {
                 filteredResults.length > 0
                     ?
-                    <ul>
-                        {filteredResults.map(proyect => <li key={proyect.id}><ProjectCard proyect={proyect} /></li>)}
-                    </ul>
+                    (
+                        <ul className={filteredListStyles.gridContainer}>
+                            {filteredResults.map(proyect => (
+                                <li key={proyect.id} className={filteredListStyles.gridItem}>
+                                    <ProjectCard proyect={proyect} />
+                                </li>
+                            ))}
+                        </ul>
+                    )
                     :
-                    <p>No hay proyectos</p>
+                    (
+                        <NoResults />
+                    )
             }
         </>
     );

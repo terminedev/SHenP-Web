@@ -2,7 +2,7 @@
 
 import ListCategories from 'components/categories/ListCategories';
 import { BrowserRouter } from 'react-router-dom';
-import { getProjectsByLimitedCategory } from 'utils/firebase/obtainings';
+import { getProjectsByCatalog } from 'utils/firebase/obtainings';
 
 function App() {
 
@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       <ListCategories
         category={{ nameCategory: 'serie' }}
-        allowFiltering={false}
-        asynchronousFunction={async () => getProjectsByLimitedCategory('serie', 4)}
+        allowFiltering={true}
+        asynchronousFunction={async () => getProjectsByCatalog('serie')}
       />
     </BrowserRouter>
   )
