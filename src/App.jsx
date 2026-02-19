@@ -1,7 +1,7 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from 'react-router-dom';
-import NoResults from 'components/ui/NoResults';
+import Sidebar from './components/ui/Sidebar';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NoResults />
+      <Sidebar />
     </BrowserRouter>
   )
 }

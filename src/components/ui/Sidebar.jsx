@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import styles from 'styles/structure/ui/Sidebar.module.css';
+import styles from 'styles/ui/Sidebar.module.css';
 
-export default function Sidebar({ onClose, isOpen }) {
+export default function Sidebar({ onClose = () => { }, isOpen = true }) {
     return (
         <div
             className={`${styles.overlay} ${isOpen ? styles.open : ''}`}
