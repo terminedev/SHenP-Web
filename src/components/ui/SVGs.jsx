@@ -1,3 +1,5 @@
+import loadingStyles from 'styles/ui/svgs/Loading.module.css';
+
 export function OpenSidebar({ className = '' }) {
     return (
         <svg
@@ -64,10 +66,10 @@ export function Personalize({ className = '' }) {
     )
 };
 
-export function Loading({ className = '' }) {
+export function Loading() {
     return (
         <svg
-            className={className}
+            className={loadingStyles.svg}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
             width="1800.000000pt" height="1803.000000pt" viewBox="0 0 1800.000000 1803.000000"

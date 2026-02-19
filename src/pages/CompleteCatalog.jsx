@@ -4,7 +4,7 @@ import ListCategories from 'components/categories/ListCategories';
 import { getProjectsByCatalog } from 'utils/firebase/obtainings';
 
 // Importamos el módulo de estilos
-import styles from 'styles/structure/pages/CompleteCatalog.module.css';
+import styles from 'styles/pages/CompleteCatalog.module.css';
 
 export default function CompleteCatalog() {
 

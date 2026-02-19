@@ -3,7 +3,7 @@ import { CATEGORIES } from 'constants/categories';
 import ListCategories from 'components/categories/ListCategories';
 import { getProjectsByLimitedCategory } from 'utils/firebase/obtainings';
 
-import homeStyle from 'styles/structure/pages/Home.module.css';
+import homeStyle from 'styles/pages/Home.module.css';
 import logoWeb from 'assets/default-customization/web-lg.png'
 import coverCharacter from 'assets/main-cover/cover-character.png';
 

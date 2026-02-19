@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // Agregado useEffect
 import { getProjectsLost } from 'utils/firebase/obtainings';
-import styles from 'styles/structure/pages/LostProject.module.css'; // Asegúrate que la ruta sea correcta
+import styles from 'styles/pages/LostProject.module.css'; // Asegúrate que la ruta sea correcta
 
 export default function LostProject() {
 

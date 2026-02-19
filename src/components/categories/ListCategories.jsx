@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 import FilteredList from 'components/filters/FilteredList';
 import ProjectCard from 'components/proyects/ProjectCard';
+import { Loading } from 'components/ui/SVGs';
+import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 
-// 1. Agregamos 'customClass' a las props (por defecto string vacío)
+import listCategoriesStyles from 'styles/components/ListCategories.module.css';
+
 export default function ListCategories({
     category,
     allowFiltering = true,
     asynchronousFunction = async () => { },
-    customClass = ""
 }) {
 
     const { nameCategory } = category;
@@ -19,6 +21,7 @@ export default function ListCategories({
         isLoading: false,
         error: null,
     });
+
 
     useEffect(() => {
         const getProyects = async () => {
@@ -30,46 +33,66 @@ export default function ListCategories({
                 setAsynchronousData({ proyects: [], isLoading: false, error: error });
             }
         }
+
         getProyects();
-    }, [nameCategory]);
+    }, [nameCategory, asynchronousFunction]);
 
     const { proyects, isLoading, error } = asynchronousData;
 
     return (
-        <>
-            {/* Si quieres, puedes pasarle la clase al h2 también, o dejarlo así */}
-            <h2>{nameCategory}</h2>
+        <div className={listCategoriesStyles.container}>
+            <h2 className={listCategoriesStyles.title}>{`${nameCategory}s`}</h2>
 
             {
                 isLoading
-                    ? <p>Obteniendo proyectos...</p>
-                    : (
+                    ?
+                    (
+                        <div className='space-center'>
+                            <Loading />
+                        </div>
+                    )
+                    :
+                    (
                         allowFiltering
-                            ? <FilteredList proyects={proyects} />
-                            : (
+                            ?
+                            (
+                                <FilteredList
+                                    proyects={proyects}
+                                />
+                            )
+                            :
+                            (
                                 proyects.length > 0
                                     ? (
-                                        // 2. Aquí aplicamos la clase dinámica junto con las que ya tenga
-                                        <ul className={customClass}>
+                                        <ul className={listCategoriesStyles.projectList}>
                                             {proyects.map(proyect => (
-                                                <li key={proyect.id}>
+                                                <li key={proyect.id} className={listCategoriesStyles.projectItem}>
                                                     <ProjectCard proyect={proyect} />
                                                 </li>
                                             ))}
 
-                                            {/* El botón de ver más será el último elemento de la fila */}
-                                            <li className="see-more-item">
-                                                <Link to={`/catalogo/${nameCategory}`}>
+                                            <li className={listCategoriesStyles.viewMoreItem}>
+                                                <Link to={`/catalogo/${nameCategory}`} className={listCategoriesStyles.viewMoreLink}>
                                                     Ver más
                                                 </Link>
                                             </li>
                                         </ul>
                                     )
-                                    : <p>No hay proyectos.</p>
+                                    : <p
+                                        className={`${listCategoriesStyles.emptyMessage} space-center`}
+                                    >
+                                        No hay proyectos.
+                                    </p>
                             )
                     )
             }
-            {error && <p>{error.message}</p>}
-        </>
+            {error &&
+                <p
+                    className={`${listCategoriesStyles.errorMessage} space-center`}
+                >
+                    {getFirebaseErrorMessage(error.message)}
+                </p>
+            }
+        </div>
     );
-};
+}

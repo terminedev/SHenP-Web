@@ -1,0 +1,64 @@
+.container {
+    padding: 1rem;
+    width: 100%;
+}
+
+.title {
+    text-transform: capitalize;
+    font-size: var(--fs-h2);
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.projectList {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--text) transparent;
+}
+
+.projectItem {
+    flex: 0 0 auto;
+}
+
+.viewMoreItem {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.viewMoreLink {
+    display: inline-block;
+    padding: .5rem;
+    background-color: transparent;
+
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.viewMoreLink:hover {
+    transform: translateX(1rem);
+}
+
+.emptyMessage,
+.errorMessage {
+    font-style: italic;
+    padding: 1rem 0;
+}
+
+.emptyMessage {
+    color: var(--information);
+}
+
+.errorMessage {
+    color: var(--error);
+}

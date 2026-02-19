@@ -113,3 +113,4 @@ desafío
 
 ##Quitar los proyectos perdidos de las secciones comunes
 ##Hacer que la busqueda implique palabras dentro no solo cuando empieza
+##Agregar una galería

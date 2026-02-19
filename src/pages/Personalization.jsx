@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import styles from 'styles/structure/pages/Personalization.module.css'; // Asegúrate que la ruta sea correcta
+import styles from 'style/pages/Personalization.module.css';
 
 export default function Personalization() {
 
