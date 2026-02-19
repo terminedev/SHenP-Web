@@ -3,10 +3,11 @@ import { Link, Outlet } from "react-router-dom";
 import Sidebar from 'components/ui/Sidebar';
 import AdvancedSearch from 'components/ui/AdvancedSearch';
 import Load from 'components/ui/Load';
-
-import layoutStyles from 'styles/structure/ui/Layout.module.css';
-import logoWeb from 'assets/default-customization/web-lg.png'
 import { OpenSidebar, Personalize, Search } from "components/ui/SVGs";
+
+import layoutStyles from 'styles/ui/Layout.module.css';
+import logoWeb from 'assets/default-customization/web-lg.png'
+
 
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");

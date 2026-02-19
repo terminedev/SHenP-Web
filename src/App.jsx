@@ -1,7 +1,7 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from 'react-router-dom';
-import AdvancedSearch from 'components/ui/AdvancedSearch';
+import Layout from 'components/ui/Layout';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AdvancedSearch />
+      <Layout />
     </BrowserRouter>
   )
 }
