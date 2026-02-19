@@ -95,6 +95,7 @@ export default function Layout() {
                 isOpen={openSidebar}
                 onClose={() => setOpenSidebar(false)}
             />
+
             {openAdvancedSearch && <AdvancedSearch onClose={() => setOpenAdvancedSearch(false)} />}
         </>
     );
