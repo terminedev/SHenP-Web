@@ -4,7 +4,7 @@ import ProjectCard from 'components/proyects/ProjectCard';
 import { filterProjects } from 'utils/filters';
 import NoResults from 'components/ui/NoResults';
 
-import filteredListStyles from 'styles/components/FilteredList.module.css';
+import filteredListStyles from 'styles/filters/FilteredList.module.css';
 
 export default function FilteredList({ proyects = [] }) {
 
