@@ -1,0 +1,24 @@
+.container {
+    width: 100vw;
+    height: 100dvh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+
+    z-index: 9999;
+}
+
+/* Opcional: Si quieres darle un poco de estilo al texto para que resalte más */
+.container p {
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 7px var(--secondary-color);
+}

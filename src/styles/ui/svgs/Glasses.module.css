@@ -1,0 +1,18 @@
+.svg {
+    fill: var(--text);
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 0 7px var(--secondary-color));
+
+    animation: giro-infinito 1s linear infinite;
+}
+
+@keyframes giro-infinito {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

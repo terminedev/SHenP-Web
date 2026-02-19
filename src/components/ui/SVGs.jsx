@@ -1,9 +1,10 @@
 import loadingStyles from 'styles/ui/svgs/Loading.module.css';
+import glassesStyles from 'styles/ui/svgs/Glasses.module.css';
 
-export function OpenSidebar({ className = '' }) {
+export function OpenSidebar({ customClass = '' }) {
     return (
         <svg
-            className={className}
+            className={customClass}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
             width="600.000000pt" height="319.000000pt" viewBox="0 0 600.000000 319.000000"
@@ -19,10 +20,10 @@ export function OpenSidebar({ className = '' }) {
     )
 };
 
-export function Search({ className = '' }) {
+export function Search({ customClass = '' }) {
     return (
         <svg
-            className={className}
+            className={customClass}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
             width="292.000000pt" height="292.000000pt" viewBox="0 0 292.000000 292.000000"
@@ -40,10 +41,10 @@ export function Search({ className = '' }) {
     )
 };
 
-export function Personalize({ className = '' }) {
+export function Personalize({ customClass = '' }) {
     return (
         <svg
-            className={className}
+            className={customClass}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
             width="393.000000pt" height="368.000000pt" viewBox="0 0 393.000000 368.000000"
@@ -66,10 +67,10 @@ export function Personalize({ className = '' }) {
     )
 };
 
-export function Loading() {
+export function Loading({ customClass = '' }) {
     return (
         <svg
-            className={loadingStyles.svg}
+            className={customClass || loadingStyles.svg}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
             width="1800.000000pt" height="1803.000000pt" viewBox="0 0 1800.000000 1803.000000"
@@ -140,6 +141,26 @@ export function Loading() {
 -118z"/>
             </g>
         </svg>
+
+    )
+};
+
+export function Glasses({ customClass = '' }) {
+    return (
+        <svg
+            className={customClass || glassesStyles.svg}
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="320.000000pt" height="81.000000pt" viewBox="0 0 320.000000 81.000000"
+            preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,81.000000) scale(0.100000,-0.100000)"
+                stroke="none">
+                <path d="M0 405 l0 -405 1600 0 1600 0 0 405 0 405 -1600 0 -1600 0 0 -405z
+m1390 -5 l0 -360 -515 0 -515 0 0 360 0 360 515 0 515 0 0 -360z m1380 0 l0
+-360 -510 0 -510 0 0 360 0 360 510 0 510 0 0 -360z"/>
+            </g>
+        </svg>
+
 
     )
 };
