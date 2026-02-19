@@ -36,7 +36,10 @@ export default function FilteredList({ proyects = [] }) {
                     )
                     :
                     (
-                        <NoResults />
+                        <div className="space-center">
+                            <NoResults />
+                        </div>
+
                     )
             }
         </>

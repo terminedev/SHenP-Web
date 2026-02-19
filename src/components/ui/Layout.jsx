@@ -46,7 +46,7 @@ export default function Layout() {
                         }}
                         className={layoutStyles.button}
                     >
-                        <OpenSidebar className={layoutStyles.svg} />
+                        <OpenSidebar customClass={layoutStyles.svg} />
                     </button>
                 </div>
 
@@ -60,7 +60,7 @@ export default function Layout() {
                             onClick={() => setOpenAdvancedSearch(true)}
                             className={layoutStyles.button}
                         >
-                            <Search className={layoutStyles.svg} />
+                            <Search customClass={layoutStyles.svg} />
                         </button>
 
                         <span className={layoutStyles.separator}>|</span>
@@ -70,7 +70,7 @@ export default function Layout() {
                             className={layoutStyles.button}
                             onClick={() => setOpenAdvancedSearch(false)}
                         >
-                            <Personalize className={layoutStyles.svg} />
+                            <Personalize customClass={layoutStyles.svg} />
                         </Link>
                     </div>
 
