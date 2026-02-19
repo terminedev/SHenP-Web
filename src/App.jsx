@@ -1,7 +1,7 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from 'react-router-dom';
-import CompleteCatalog from './pages/CompleteCatalog';
+import Home from './pages/Home';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <CompleteCatalog />
+      <Home />
     </BrowserRouter>
   )
 }
