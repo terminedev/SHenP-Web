@@ -1,6 +1,19 @@
 .container {
     width: 100%;
     padding: 1rem;
+    animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
+}
+
+@keyframes slide-in-fwd-center {
+    0% {
+        transform: translateZ(-1400px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateZ(0);
+        opacity: 1
+    }
 }
 
 .header {

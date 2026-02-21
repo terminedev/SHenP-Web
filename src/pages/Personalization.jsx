@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import styles from "styles/pages/Personalization.module.css";
+import personalizationStyles from "styles/pages/Personalization.module.css";
 
 // --- IMPORTACIONES DE FONDOS ---
 import defaultBg from "assets/default-customization/background-web.png";
@@ -66,33 +66,33 @@ const ImageSelect = ({ options, value, name, onChange }) => {
     };
 
     return (
-        <div className={styles.selectWrapper}>
+        <div className={personalizationStyles.selectWrapper}>
             {/* Botón que muestra la opción seleccionada */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className={styles.selectButton}
+                className={personalizationStyles.selectButton}
             >
                 <img
                     src={selectedOption.value}
                     alt={selectedOption.label}
-                    className={styles.thumbnail}
+                    className={personalizationStyles.thumbnail}
                 />
                 <span>{selectedOption.label}</span>
             </div>
 
             {/* Lista desplegable */}
             {isOpen && (
-                <ul className={styles.dropdownList}>
+                <ul className={personalizationStyles.dropdownList}>
                     {options.map((option, index) => (
                         <li
                             key={index}
                             onClick={() => handleSelect(option.value)}
-                            className={styles.dropdownItem}
+                            className={personalizationStyles.dropdownItem}
                         >
                             <img
                                 src={option.value}
                                 alt={option.label}
-                                className={styles.thumbnail}
+                                className={personalizationStyles.thumbnail}
                             />
                             <span>{option.label}</span>
                         </li>
@@ -113,12 +113,12 @@ export default function Personalization() {
     };
 
     return (
-        <section className={styles.container}>
-            <h2 className={styles.heading}>Configuración de Tema</h2>
+        <section className={personalizationStyles.container}>
+            <h2 className={personalizationStyles.heading}>Configuración de Tema</h2>
 
             {/* Opción 1: Fondo */}
-            <div className={styles.formGroup}>
-                <label className={styles.label}>Estilo del Fondo</label>
+            <div className={personalizationStyles.formGroup}>
+                <label className={personalizationStyles.label}>Estilo del Fondo</label>
                 <ImageSelect
                     options={backgroundOptions}
                     value={theme.bgImage || defaultBg}
@@ -128,8 +128,8 @@ export default function Personalization() {
             </div>
 
             {/* Opción 2: Opacidad */}
-            <div className={styles.formGroup}>
-                <label className={styles.label}>
+            <div className={personalizationStyles.formGroup}>
+                <label className={personalizationStyles.label}>
                     Opacidad del Fondo: {theme.opacity}
                 </label>
                 <input
@@ -140,13 +140,13 @@ export default function Personalization() {
                     step="0.1"
                     value={theme.opacity}
                     onChange={handleChange}
-                    className={styles.rangeInput}
+                    className={personalizationStyles.rangeInput}
                 />
             </div>
 
             {/* Opción 3: Logo */}
-            <div className={styles.formGroup}>
-                <label className={styles.label}>Estilo del Logo</label>
+            <div className={personalizationStyles.formGroup}>
+                <label className={personalizationStyles.label}>Estilo del Logo</label>
                 <ImageSelect
                     options={logoOptions}
                     value={theme.logo || defaultLogo}
