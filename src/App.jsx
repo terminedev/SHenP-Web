@@ -1,19 +1,8 @@
-// import SpaRoutes from 'routes/SpaRoutes';
-
-import { BrowserRouter } from 'react-router-dom';
-import LostProject from './pages/LostProject';
-
-
+import SpaRoutes from 'routes/SpaRoutes';
 
 function App() {
 
-  // return (<SpaRoutes />)
-
-  return (
-    <BrowserRouter>
-      <LostProject />
-    </BrowserRouter>
-  )
+  return (<SpaRoutes />);
 }
 
 export default App;

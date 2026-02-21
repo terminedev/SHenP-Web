@@ -6,12 +6,17 @@ import Load from 'components/ui/Load';
 import { OpenSidebar, Personalize, Search } from "components/ui/SVGs";
 
 import layoutStyles from 'styles/ui/Layout.module.css';
-import logoWeb from 'assets/default-customization/web-lg.png'
 
+import defaultBg from "assets/default-customization/background-web.png";
+import defaultLogo from "assets/default-customization/web-lg.png";
 
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
-    return saved ? JSON.parse(saved) : { bgImage: "", opacity: 0.5, logo: "default" };
+    return saved ? JSON.parse(saved) : {
+        bgImage: defaultBg,
+        opacity: 0.5,
+        logo: defaultLogo
+    };
 };
 
 export default function Layout() {
@@ -32,7 +37,7 @@ export default function Layout() {
                 <div className={layoutStyles.leftGroup}>
                     <Link to={'/'} onClick={() => setOpenAdvancedSearch(false)}>
                         <img
-                            src={logoWeb}
+                            src={theme.logo}
                             alt="logo básico"
                             className={layoutStyles.logoWeb}
                         />
@@ -87,9 +92,19 @@ export default function Layout() {
             </header>
 
             <main className={layoutStyles.main}>
-                <Suspense fallback={<Load />}>
-                    <Outlet context={{ theme, setTheme }} />
-                </Suspense>
+                <div
+                    className={layoutStyles.backgroundLayer}
+                    style={{
+                        backgroundImage: `url(${theme.bgImage})`,
+                        opacity: theme.opacity
+                    }}
+                />
+
+                <div className={layoutStyles.contentContainer}>
+                    <Suspense fallback={<Load />}>
+                        <Outlet context={{ theme, setTheme }} />
+                    </Suspense>
+                </div>
             </main>
 
             <Sidebar

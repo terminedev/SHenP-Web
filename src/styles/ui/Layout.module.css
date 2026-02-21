@@ -101,6 +101,26 @@
 
 .main {
     margin-top: 70px;
+    position: relative;
+}
+
+.backgroundLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.contentContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 
 @keyframes heartbeat {
