@@ -1,7 +1,8 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from 'react-router-dom';
-import Home from './pages/Home';
+import LostProject from './pages/LostProject';
+
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Home />
+      <LostProject />
     </BrowserRouter>
   )
 }

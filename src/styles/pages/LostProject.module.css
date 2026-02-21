@@ -1,91 +1,166 @@
-/* styles/structure/pages/LostProject.module.css */
-
 .container {
-    max-width: 800px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1rem;
-    font-family: system-ui, -apple-system, sans-serif;
-    color: #333;
+    padding: 2rem;
 }
 
-.title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.header {
     text-align: center;
-    color: #1a1a1a;
-}
-
-.description {
-    text-align: center;
-    color: #666;
     margin-bottom: 3rem;
+}
+
+.header h2 {
+    font-weight: 400;
+    font-size: var(--fs-h2);
+    margin-bottom: 0.5rem;
+    color: var(--text);
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 7px;
+}
+
+.header p {
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 
-.list {
+.projectList {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    /* Espacio entre proyectos */
+    gap: 4rem;
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border: 1px solid #eaeaea;
-    padding: 1.5rem;
-    transition: transform 0.2s ease;
+.projectCard {
+    height: 500px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 3rem;
+    background: var(--background);
+    padding: 2rem;
+    overflow: hidden;
+    animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+@keyframes slide-in-fwd-center {
+    0% {
+        transform: translateZ(-1400px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateZ(0);
+        opacity: 1
+    }
 }
 
-.projectName {
-    font-size: 1.5rem;
-    margin: 0 0 1rem 0;
-    color: #222;
-    width: 100%;
-    text-align: left;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 0.5rem;
+.projectCard:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
 .imageContainer {
+    flex: 1;
     width: 100%;
+    height: 100%;
+    height: 300px;
+
+    background-color: var(--background);
+    background-image: url('assets/no-image-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 7px;
+    box-shadow: 0 0 1rem var(--secondary-color);
     overflow: hidden;
-    border-radius: 8px;
-    background-color: #f9f9f9;
 }
 
-.projectImage {
+.coverImage {
     width: 100%;
-    height: auto;
-    max-height: 400px;
-    /* Limita la altura para que no sean gigantes */
+    height: 100%;
     object-fit: cover;
-    /* Recorta la imagen para llenar el espacio sin deformar */
-    display: block;
+}
+
+.detailsContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    max-height: 100%;
+}
+
+.title {
+    font-size: var(--fs-h3);
+    margin-bottom: .7rem;
+    color: var(--success);
+    text-shadow: 0 0 7px var(--secondary-color);
+}
+
+.author,
+.date,
+.catalog {
+    margin: 0;
+    font-size: var(--fs-h6);
+    color: var(--text);
+}
+
+.description {
+    margin-top: 1rem;
+    line-height: 1.6;
+    color: var(--information);
+    overflow-y: auto;
+    min-height: 0;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--text) transparent;
 }
 
 .loading,
-.error,
-.empty {
+.empty,
+.error {
+    padding: 1rem;
     text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-    color: #888;
+}
+
+.loading {
+    color: var(--information);
+}
+
+.empty {
+    color: var(--warning);
 }
 
 .error {
-    color: #d32f2f;
+    color: var(--error);
+}
+
+
+@media (max-width: 768px) {
+
+    .projectCard,
+    .projectCard:nth-child(even) {
+        flex-direction: column;
+        gap: 1.5rem;
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .imageContainer {
+        width: 100%;
+        height: 250px;
+        flex: none;
+    }
+
+    .detailsContainer {
+        width: 100%;
+        height: auto;
+        flex: none;
+    }
+
+    .description {
+        max-height: 200px;
+    }
 }
