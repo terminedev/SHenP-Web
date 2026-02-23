@@ -110,7 +110,12 @@ explícito
 acción
 desafío
 
+* **Galería: (imageUrl (string), seccion (string))**
+Nova
+Exe World
+Logos
+Fondos
 
-##Quitar los proyectos perdidos de las secciones comunes
-##Hacer que la busqueda implique palabras dentro no solo cuando empieza
+##Usar clamp
 ##Agregar una galería
+
