@@ -1,24 +1,24 @@
 .container {
-    padding: 1rem;
+    padding: .7rem;
     width: 100%;
 }
 
 .title {
     text-transform: capitalize;
     font-size: var(--fs-h2);
-    margin-bottom: 1.5rem;
+    margin-bottom: .7rem;
     color: var(--text);
 }
 
 .projectList {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: .7rem;
     padding: 0;
     margin: 0;
     list-style: none;
     overflow-x: auto;
-    padding-bottom: 1rem;
+    padding-bottom: .7rem;
 
     scrollbar-width: thin;
     scrollbar-color: var(--text) transparent;
@@ -36,7 +36,7 @@
 
 .viewMoreLink {
     display: inline-block;
-    padding: .5rem;
+    padding: .7rem;
     background-color: transparent;
 
     color: var(--primary-color);

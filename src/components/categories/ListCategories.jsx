@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { Link } from "react-router-dom";
 
+// Componentes
 import FilteredList from 'components/filters/FilteredList';
 import ProjectCard from 'components/proyects/ProjectCard';
 import { Loading } from 'components/ui/SVGs';
-import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 
+// Utilidades y Estilos
+import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 import listCategoriesStyles from 'styles/components/ListCategories.module.css';
 
 export default function ListCategories({
@@ -14,6 +16,8 @@ export default function ListCategories({
     asynchronousFunction = async () => { },
 }) {
 
+
+    // 1. Variables y Estado 
     const { nameCategory } = category;
 
     const [asynchronousData, setAsynchronousData] = useState({
@@ -22,77 +26,97 @@ export default function ListCategories({
         error: null,
     });
 
-
-    useEffect(() => {
-        const getProyects = async () => {
-            try {
-                setAsynchronousData({ proyects: [], isLoading: true, error: null });
-                const proyects = await asynchronousFunction();
-                setAsynchronousData({ proyects: proyects, isLoading: false, error: null });
-            } catch (error) {
-                setAsynchronousData({ proyects: [], isLoading: false, error: error });
-            }
-        }
-
-        getProyects();
-    }, [nameCategory, asynchronousFunction]);
-
     const { proyects, isLoading, error } = asynchronousData;
 
+
+    // 2. Efectos 
+    useEffect(() => {
+        let isMounted = true;
+
+        const getProyects = async () => {
+            try {
+                setAsynchronousData(prev => ({ ...prev, isLoading: true, error: null }));
+
+                const fetchedProyects = await asynchronousFunction();
+
+                if (isMounted) {
+                    setAsynchronousData({ proyects: fetchedProyects, isLoading: false, error: null });
+                }
+            } catch (err) {
+                if (isMounted) {
+                    setAsynchronousData({ proyects: [], isLoading: false, error: err });
+                }
+            }
+        };
+
+        getProyects();
+
+        return () => isMounted = false;
+
+    }, [nameCategory, asynchronousFunction]);
+
+    // 3. Funciones de Renderizado Condicional
+
+    const renderContent = () => {
+
+        // Estado 1: Cargando
+        if (isLoading) {
+            return (
+                <div className="space-center">
+                    <Loading />
+                </div>
+            );
+        }
+
+        // Estado 2: Lista con filtros activados
+        if (allowFiltering) {
+            return <FilteredList proyects={proyects} />;
+        }
+
+        // Estado 3: Lista normal sin filtros (si hay proyectos)
+        if (proyects.length > 0) {
+            return (
+                <ul className={listCategoriesStyles.projectList}>
+                    {proyects.map(proyect => (
+                        <li key={proyect.id} className={listCategoriesStyles.projectItem}>
+                            <ProjectCard proyect={proyect} />
+                        </li>
+                    ))}
+                    <li className={listCategoriesStyles.viewMoreItem}>
+                        <Link to={`/catalogo/${nameCategory}`} className={listCategoriesStyles.viewMoreLink}>
+                            Ver más
+                        </Link>
+                    </li>
+                </ul>
+            );
+        }
+
+        // Estado 4: Vacío (sin proyectos)
+        return (
+            !error && (
+                <p className={`${listCategoriesStyles.emptyMessage} space-center`}>
+                    No hay proyectos.
+                </p>
+            )
+        );
+    };
+
+    // 4. Renderizado Principal
     return (
         <div className={listCategoriesStyles.container}>
-            <h2 className={listCategoriesStyles.title}>{`${nameCategory}s`}</h2>
+            <h2 className={listCategoriesStyles.title}>
+                {`${nameCategory}s`}
+            </h2>
 
-            {
-                isLoading
-                    ?
-                    (
-                        <div className='space-center'>
-                            <Loading />
-                        </div>
-                    )
-                    :
-                    (
-                        allowFiltering
-                            ?
-                            (
-                                <FilteredList
-                                    proyects={proyects}
-                                />
-                            )
-                            :
-                            (
-                                proyects.length > 0
-                                    ? (
-                                        <ul className={listCategoriesStyles.projectList}>
-                                            {proyects.map(proyect => (
-                                                <li key={proyect.id} className={listCategoriesStyles.projectItem}>
-                                                    <ProjectCard proyect={proyect} />
-                                                </li>
-                                            ))}
+            {/* Contenido principal basado en las condiciones */}
+            {renderContent()}
 
-                                            <li className={listCategoriesStyles.viewMoreItem}>
-                                                <Link to={`/catalogo/${nameCategory}`} className={listCategoriesStyles.viewMoreLink}>
-                                                    Ver más
-                                                </Link>
-                                            </li>
-                                        </ul>
-                                    )
-                                    : <p
-                                        className={`${listCategoriesStyles.emptyMessage} space-center`}
-                                    >
-                                        No hay proyectos.
-                                    </p>
-                            )
-                    )
-            }
-            {error &&
-                <p
-                    className={`${listCategoriesStyles.errorMessage} space-center`}
-                >
+            {/* Mensaje de error (si existe) */}
+            {error && (
+                <p className={`${listCategoriesStyles.errorMessage} space-center`}>
                     {getFirebaseErrorMessage(error.message)}
                 </p>
-            }
+            )}
         </div>
     );
-}
+};
