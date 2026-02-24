@@ -30,6 +30,7 @@ export default memo(function ListFilters({ filterActual, changeFilter }) {
                 value={value || ""}
                 onChange={(e) => handleChange(field, e.target.value)}
                 className={listFiltersStyles.select}
+                aria-label={`Filtrar por ${label}`}
             >
                 <option value="">{defaultOptionText}</option>
                 {options.map(item => (
@@ -43,8 +44,11 @@ export default memo(function ListFilters({ filterActual, changeFilter }) {
 
     // 3. Renderizado principal
     return (
-        <div className={listFiltersStyles.filtersContainer}>
-
+        <aside
+            className={listFiltersStyles.filtersContainer}
+            role="search"
+            aria-label="Filtros de búsqueda"
+        >
             {/* Control para Géneros */}
             <FilterGroup
                 id="currentGenre"
@@ -64,7 +68,6 @@ export default memo(function ListFilters({ filterActual, changeFilter }) {
                 options={STATE_OF_ISSUE}
                 defaultOptionText="Todos los estados"
             />
-
-        </div>
+        </aside>
     );
 });

@@ -35,7 +35,12 @@ export default function FilteredList({ proyects = [] }) {
 
             {/* Renderizado condicional de resultados */}
             {hasResults ? (
-                <ul className={filteredListStyles.gridContainer}>
+                <ul
+                    className={filteredListStyles.gridContainer}
+                    aria-label="Resultados filtrados"
+                    aria-live="polite"
+                    aria-atomic="false"
+                >
                     {filteredResults.map((proyect) => (
                         <li key={proyect.idProyect} className={filteredListStyles.gridItem}>
                             <ProjectCard proyect={proyect} />
@@ -43,7 +48,11 @@ export default function FilteredList({ proyects = [] }) {
                     ))}
                 </ul>
             ) : (
-                <div className="space-center">
+                <div
+                    className="space-center"
+                    role="status"
+                    aria-live="polite"
+                >
                     <NoResults />
                 </div>
             )}

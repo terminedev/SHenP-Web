@@ -4,6 +4,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    border: none;
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 999;
     backdrop-filter: blur(2px);
@@ -23,15 +25,13 @@
 }
 
 .container {
-    position: fixed;
-    top: 80px;
-    right: 1vw;
-    bottom: 1vh;
-
-    width: 370px;
+    position: relative;
+    width: clamp(320px, 100vw - 50px, 700px);
+    height: clamp(80dvh, 120dvh - 50vw, 100dvh);
+    top: 70px;
+    margin: 0 auto;
 
     background-color: var(--background);
-    border-radius: 17px;
 
     box-shadow: 0px 0px 7px var(--primary-color);
     z-index: 1000;
@@ -41,7 +41,19 @@
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid var(--borders-and-dividers);
-    animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
+    animation: slide-in-bottom .5s cubic-bezier(.25, .46, .45, .94) both
+}
+
+@keyframes slide-in-bottom {
+    0% {
+        transform: translateY(1000px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
 }
 
 .searchInput {

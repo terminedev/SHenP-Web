@@ -6,7 +6,7 @@ import FilteredList from 'components/filters/FilteredList';
 import ProjectCard from 'components/proyects/ProjectCard';
 import { Loading } from 'components/ui/SVGs';
 
-// Utilidades y Estilos
+// Utilidades y Estilos 
 import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 import listCategoriesStyles from 'styles/components/ListCategories.module.css';
 
@@ -19,6 +19,7 @@ export default function ListCategories({
 
     // 1. Variables y Estado 
     const { nameCategory } = category;
+    const categoryId = `category-title-${nameCategory.replace(/\s+/g, '-').toLowerCase()}`;
 
     const [asynchronousData, setAsynchronousData] = useState({
         proyects: [],
@@ -63,7 +64,12 @@ export default function ListCategories({
         // Estado 1: Cargando
         if (isLoading) {
             return (
-                <div className="space-center">
+                <div
+                    className="space-center"
+                    role="status"
+                    aria-live="polite"
+                    aria-label={`Cargando proyectos de ${nameCategory}`}
+                >
                     <Loading />
                 </div>
             );
@@ -77,14 +83,21 @@ export default function ListCategories({
         // Estado 3: Lista normal sin filtros (si hay proyectos)
         if (proyects.length > 0) {
             return (
-                <ul className={listCategoriesStyles.projectList}>
+                <ul
+                    className={listCategoriesStyles.projectList}
+                    aria-label={`Listado de ${nameCategory}s`}
+                >
                     {proyects.map(proyect => (
                         <li key={proyect.id} className={listCategoriesStyles.projectItem}>
                             <ProjectCard proyect={proyect} />
                         </li>
                     ))}
                     <li className={listCategoriesStyles.viewMoreItem}>
-                        <Link to={`/catalogo/${nameCategory}`} className={listCategoriesStyles.viewMoreLink}>
+                        <Link
+                            to={`/catalogo/${nameCategory}`}
+                            className={listCategoriesStyles.viewMoreLink}
+                            aria-label={`Ver más proyectos de la categoría ${nameCategory}`}
+                        >
                             Ver más
                         </Link>
                     </li>
@@ -95,7 +108,10 @@ export default function ListCategories({
         // Estado 4: Vacío (sin proyectos)
         return (
             !error && (
-                <p className={`${listCategoriesStyles.emptyMessage} space-center`}>
+                <p
+                    className={`${listCategoriesStyles.emptyMessage} space-center`}
+                    role="status"
+                >
                     No hay proyectos.
                 </p>
             )
@@ -104,17 +120,26 @@ export default function ListCategories({
 
     // 4. Renderizado Principal
     return (
-        <div className={listCategoriesStyles.container}>
-            <h2 className={listCategoriesStyles.title}>
+        <div
+            className={listCategoriesStyles.container}
+            aria-labelledby={categoryId}
+            aria-busy={isLoading}
+        >
+            <h2
+                className={listCategoriesStyles.title}
+                id={categoryId}
+            >
                 {`${nameCategory}s`}
             </h2>
 
-            {/* Contenido principal basado en las condiciones */}
             {renderContent()}
 
-            {/* Mensaje de error (si existe) */}
             {error && (
-                <p className={`${listCategoriesStyles.errorMessage} space-center`}>
+                <p
+                    className={`${listCategoriesStyles.errorMessage} space-center`}
+                    role="alert"
+                    aria-live="assertive"
+                >
                     {getFirebaseErrorMessage(error.message)}
                 </p>
             )}
