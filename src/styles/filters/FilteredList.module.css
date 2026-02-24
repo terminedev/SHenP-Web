@@ -1,9 +1,9 @@
 .gridContainer {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 50vw, 200px), 1fr));
+    gap: var(--fs-h5);
+    padding: var(--fs-h5);
     list-style: none;
 }
 

@@ -1,24 +1,24 @@
 .container {
-    padding: .7rem;
+    padding: var(--fs-h4);
     width: 100%;
 }
 
 .title {
     text-transform: capitalize;
     font-size: var(--fs-h2);
-    margin-bottom: .7rem;
+    margin-bottom: var(--fs-h5);
     color: var(--text);
 }
 
 .projectList {
     display: flex;
     flex-direction: row;
-    gap: .7rem;
+    gap: var(--fs-h5);
     padding: 0;
     margin: 0;
     list-style: none;
     overflow-x: auto;
-    padding-bottom: .7rem;
+    padding-bottom: var(--fs-h5);
 
     scrollbar-width: thin;
     scrollbar-color: var(--text) transparent;
@@ -35,8 +35,9 @@
 }
 
 .viewMoreLink {
+    font-size: var(--fs-h4);
     display: inline-block;
-    padding: .7rem;
+    padding: var(--fs-h5);
     background-color: transparent;
 
     color: var(--primary-color);
@@ -46,13 +47,13 @@
 }
 
 .viewMoreLink:hover {
-    transform: translateX(1rem);
+    transform: translateX(var(--fs-h4));
 }
 
 .emptyMessage,
 .errorMessage {
     font-style: italic;
-    padding: 1rem 0;
+    padding: var(--fs-h4) 0;
 }
 
 .emptyMessage {

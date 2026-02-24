@@ -29,7 +29,7 @@ export default function ListCategories({
     const { proyects, isLoading, error } = asynchronousData;
 
 
-    // 2. Efectos 
+    // 2. Efecto secundario para obtener la función asíncrona.
     useEffect(() => {
         let isMounted = true;
 
@@ -54,6 +54,7 @@ export default function ListCategories({
         return () => isMounted = false;
 
     }, [nameCategory, asynchronousFunction]);
+
 
     // 3. Funciones de Renderizado Condicional
 

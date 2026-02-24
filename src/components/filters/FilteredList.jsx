@@ -1,47 +1,52 @@
+// Librerías externas
 import { useState, useMemo } from "react";
+
+// Componentes internos
 import ListFilters from 'components/filters/ListFilters';
 import ProjectCard from 'components/proyects/ProjectCard';
-import { filterProjects } from 'utils/filters';
 import NoResults from 'components/ui/NoResults';
 
+// Utilidades
+import { filterProjects } from 'utils/filters';
+
+// Estilos
 import filteredListStyles from 'styles/filters/FilteredList.module.css';
 
 export default function FilteredList({ proyects = [] }) {
 
+    // 1. Estado local del filtro.
     const [filter, setFilter] = useState({
         gender: null,
         state: null
     });
 
+    // 2. Memorizar los filtrados.
     const filteredResults = useMemo(() => {
-        if (!proyects) return [];
         return filterProjects(filter, proyects);
     }, [filter, proyects]);
 
+    // 3. Almacenar si hay resultados.
+    const hasResults = filteredResults.length > 0;
+
     return (
         <>
+            {/* Controles de filtrado */}
             <ListFilters filterActual={filter} changeFilter={setFilter} />
 
-            {
-                filteredResults.length > 0
-                    ?
-                    (
-                        <ul className={filteredListStyles.gridContainer}>
-                            {filteredResults.map(proyect => (
-                                <li key={proyect.id} className={filteredListStyles.gridItem}>
-                                    <ProjectCard proyect={proyect} />
-                                </li>
-                            ))}
-                        </ul>
-                    )
-                    :
-                    (
-                        <div className="space-center">
-                            <NoResults />
-                        </div>
-
-                    )
-            }
+            {/* Renderizado condicional de resultados */}
+            {hasResults ? (
+                <ul className={filteredListStyles.gridContainer}>
+                    {filteredResults.map((proyect) => (
+                        <li key={proyect.id} className={filteredListStyles.gridItem}>
+                            <ProjectCard proyect={proyect} />
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div className="space-center">
+                    <NoResults />
+                </div>
+            )}
         </>
     );
 }

@@ -8,7 +8,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ListCategories category={{ nameCategory: 'serie' }} allowFiltering={false} asynchronousFunction={async () => getProjectsByCatalog('serie')} />
+      <ListCategories category={{ nameCategory: 'serie' }} allowFiltering={true} asynchronousFunction={async () => getProjectsByCatalog('serie')} />
     </BrowserRouter>
   );
 
