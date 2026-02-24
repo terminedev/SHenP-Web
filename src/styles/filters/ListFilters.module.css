@@ -1,5 +1,6 @@
 .filtersContainer {
     width: 100%;
+    max-width: 1200px;
 
     display: flex;
     flex-direction: column;
@@ -8,6 +9,7 @@
     border: 1px solid var(--primary-color);
     border-radius: 7px;
     transition: all .3s ease-in;
+    margin: 0 auto;
 }
 
 .filtersContainer:hover {

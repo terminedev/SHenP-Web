@@ -37,7 +37,7 @@ export default function FilteredList({ proyects = [] }) {
             {hasResults ? (
                 <ul className={filteredListStyles.gridContainer}>
                     {filteredResults.map((proyect) => (
-                        <li key={proyect.id} className={filteredListStyles.gridItem}>
+                        <li key={proyect.idProyect} className={filteredListStyles.gridItem}>
                             <ProjectCard proyect={proyect} />
                         </li>
                     ))}

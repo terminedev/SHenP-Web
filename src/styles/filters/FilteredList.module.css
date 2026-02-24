@@ -1,16 +1,15 @@
 .gridContainer {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 50vw, 200px), 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--fs-h5);
     padding: var(--fs-h5);
     list-style: none;
+
+    align-items: start;
+    justify-content: center;
 }
 
 .gridItem {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    flex: 0 1 200px;
 }

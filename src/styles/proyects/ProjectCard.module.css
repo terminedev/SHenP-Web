@@ -1,6 +1,6 @@
 .card {
-    width: 270px;
-    height: 300px;
+    width: clamp(270px, 100vw - 50px, 300px);
+    height: clamp(220px, 100vw - 100px, 270px);
 
     display: flex;
     flex-direction: column;
@@ -10,12 +10,14 @@
 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-decoration: none;
-    height: 100%;
+
+    background-color: rgb(37, 37, 37);
 }
 
 .card:hover {
     transform: translateY(-7px);
-    box-shadow: 0 0 7px var(--success);
+    border: 1px solid var(--text);
+    box-shadow: 0 0 7px var(--secondary-color);
 }
 
 .imageContainer {
@@ -48,26 +50,21 @@
 }
 
 .info {
-    padding: 1rem;
+    padding: var(--fs-h5);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--fs-h5);
 }
 
 .title {
-    margin: 0;
-    font-size: 1.1rem;
+    font-size: var(--fs-h4);
     font-weight: 600;
     color: var(--text);
     line-height: 1.2;
     overflow: hidden;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
 }
 
 .date {
-    font-size: 0.85rem;
-    color: var(--information);
+    font-size: var(--fs-h5);
+    color: var(--success);
 }
