@@ -1,13 +1,13 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from "react-router-dom";
-import AdvancedSearch from "./components/ui/AdvancedSearch";
+import Layout from 'components/ui/Layout';
 
 function App() {
 
   return (
     <BrowserRouter>
-      <AdvancedSearch onClose={() => { }} />
+      <Layout />
     </BrowserRouter>
   );
 

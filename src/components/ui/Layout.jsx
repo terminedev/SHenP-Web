@@ -1,15 +1,21 @@
-import { useState, useEffect, Suspense } from "react";
+// Librerías
+import { useState, useEffect, Suspense, useCallback } from "react";
 import { Link, Outlet } from "react-router-dom";
+
+// Componentes
 import Sidebar from 'components/ui/Sidebar';
 import AdvancedSearch from 'components/ui/AdvancedSearch';
 import Load from 'components/ui/Load';
 import { OpenSidebar, Personalize, Search } from "components/ui/SVGs";
 
+// Estilos
 import layoutStyles from 'styles/ui/Layout.module.css';
 
+// Assets
 import defaultBg from "assets/default-customization/background-web.png";
 import defaultLogo from "assets/default-customization/web-lg.png";
 
+// Inicializar tema (personalizado/por defecto)
 const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
     return saved ? JSON.parse(saved) : {
@@ -21,61 +27,98 @@ const getInitialTheme = () => {
 
 export default function Layout() {
 
+
+    // Estados
     const [theme, setTheme] = useState(getInitialTheme);
     const [openSidebar, setOpenSidebar] = useState(false);
     const [openAdvancedSearch, setOpenAdvancedSearch] = useState(false);
 
+
+    // Efectos
     useEffect(() => {
         localStorage.setItem("shenp-theme", JSON.stringify(theme));
     }, [theme]);
 
+
+    // Manejadores de eventos
+    const handleOpenSidebar = useCallback(() => {
+        setOpenSidebar(true);
+        setOpenAdvancedSearch(false);
+    }, []);
+
+    const handleCloseSidebar = useCallback(() => {
+        setOpenSidebar(false);
+    }, []);
+
+    const handleOpenAdvancedSearch = useCallback(() => {
+        setOpenAdvancedSearch(true);
+    }, []);
+
+    const handleCloseAdvancedSearch = useCallback(() => {
+        setOpenAdvancedSearch(false);
+    }, []);
+
+    const handleResetSearch = useCallback(() => {
+        setOpenAdvancedSearch(false);
+    }, []);
+
+
+
     return (
         <>
+            {/* Cabecera */}
             <header className={layoutStyles.header}>
 
-                {/* Grupo izquierdo: Logo + Menú */}
+                {/* Sección Izquierda: Logo + Menú */}
                 <div className={layoutStyles.leftGroup}>
-                    <Link to={'/'} onClick={() => setOpenAdvancedSearch(false)}>
+                    <Link
+                        to={'/'}
+                        onClick={handleResetSearch}
+                        aria-label="Ir a la página de inicio"
+                    >
                         <img
                             src={theme.logo}
-                            alt="logo básico"
+                            alt="Logotipo de la aplicación"
                             className={layoutStyles.logoWeb}
                         />
                     </Link>
 
                     <button
                         type="button"
-                        onClick={() => {
-                            setOpenSidebar(true)
-                            setOpenAdvancedSearch(false)
-                        }}
+                        onClick={handleOpenSidebar}
                         className={layoutStyles.button}
+                        aria-label="Abrir menú de navegación"
+                        aria-expanded={openSidebar}
+                        aria-controls="sidebar-menu"
                     >
-                        <OpenSidebar customClass={layoutStyles.svg} />
+                        <OpenSidebar customClass={layoutStyles.svg} aria-hidden="true" />
                     </button>
                 </div>
 
-                {/* Grupo derecho: Buscador/Pers + Usuario */}
+                {/* Sección derecha: Buscador / Personalización + Usuario */}
                 <div className={layoutStyles.rightGroup}>
 
-                    {/* Contenedor estilo "Input" */}
                     <div className={layoutStyles.searchContainer}>
                         <button
                             type="button"
-                            onClick={() => setOpenAdvancedSearch(true)}
+                            onClick={handleOpenAdvancedSearch}
                             className={layoutStyles.button}
+                            aria-label="Abrir búsqueda avanzada"
+                            aria-expanded={openAdvancedSearch}
+                            aria-controls="advanced-search-panel"
                         >
-                            <Search customClass={layoutStyles.svg} />
+                            <Search customClass={layoutStyles.svg} aria-hidden="true" />
                         </button>
 
-                        <span className={layoutStyles.separator}>|</span>
+                        <span className={layoutStyles.separator} aria-hidden="true">|</span>
 
                         <Link
                             to={'/personalizacion'}
                             className={layoutStyles.button}
-                            onClick={() => setOpenAdvancedSearch(false)}
+                            onClick={handleResetSearch}
+                            aria-label="Ir a la configuración de personalización"
                         >
-                            <Personalize customClass={layoutStyles.svg} />
+                            <Personalize customClass={layoutStyles.svg} aria-hidden="true" />
                         </Link>
                     </div>
 
@@ -84,13 +127,14 @@ export default function Layout() {
                         target="_blank"
                         rel="noreferrer"
                         className={layoutStyles.userName}
+                        aria-label="Visitar perfil de GitHub de Gastøn ♱érmine (se abre en una nueva pestaña)"
                     >
                         Gastøn ♱érmine
                     </a>
                 </div>
-
             </header>
 
+            {/* Contenido principal */}
             <main className={layoutStyles.main}>
                 <div
                     className={layoutStyles.backgroundLayer}
@@ -98,6 +142,7 @@ export default function Layout() {
                         backgroundImage: `url(${theme.bgImage})`,
                         opacity: theme.opacity
                     }}
+                    aria-hidden="true"
                 />
 
                 <div className={layoutStyles.contentContainer}>
@@ -107,12 +152,17 @@ export default function Layout() {
                 </div>
             </main>
 
+            {/* Modales */}
             <Sidebar
                 isOpen={openSidebar}
-                onClose={() => setOpenSidebar(false)}
+                onClose={handleCloseSidebar}
             />
 
-            {openAdvancedSearch && <AdvancedSearch onClose={() => setOpenAdvancedSearch(false)} />}
+            {openAdvancedSearch && (
+                <AdvancedSearch
+                    onClose={handleCloseAdvancedSearch}
+                />
+            )}
         </>
     );
-};
+}

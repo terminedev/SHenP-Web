@@ -28,7 +28,6 @@
     position: relative;
     width: clamp(320px, 100vw - 50px, 500px);
     height: clamp(80dvh, 120dvh - 50vw, 100dvh);
-    top: 70px;
     margin: 0 auto;
 
     background-color: var(--background);
@@ -41,12 +40,12 @@
     box-sizing: border-box;
     overflow: hidden;
     border: 1px solid var(--borders-and-dividers);
-    animation: slide-in-bottom .5s cubic-bezier(.25, .46, .45, .94) both
+    animation: slide-in-top .5s cubic-bezier(.25, .46, .45, .94) both
 }
 
-@keyframes slide-in-bottom {
+@keyframes slide-in-top {
     0% {
-        transform: translateY(1000px);
+        transform: translateY(-1000px);
         opacity: 0
     }
 
