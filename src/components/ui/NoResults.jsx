@@ -8,6 +8,7 @@ export default function NoResults() {
                 className={noResultsStyles.messageImage}
                 src={NoResultMessage}
                 alt='resultados no encontrados'
+                loading='lazy'
             />
         </div>
     );

@@ -1,13 +1,13 @@
 // import SpaRoutes from 'routes/SpaRoutes';
 
 import { BrowserRouter } from "react-router-dom";
-import Load from "./components/ui/Load";
+import NoResults from "./components/ui/NoResults";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Load />
+      <NoResults />
     </BrowserRouter>
   );
 

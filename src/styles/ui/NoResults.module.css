@@ -1,6 +1,6 @@
 .container {
-    width: 270px;
-    height: 135px;
+    width: clamp(180px, 5vw + 160px, 320px);
+    height: clamp(70px, 5vw + 50px, 130px);
     border-radius: 7px;
 
     background-image: url('assets/no-results/no-results-bg.png');
@@ -12,6 +12,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 7px var(--secondary-color);
+
+    margin: 0 auto;
 }
 
 .messageImage {
