@@ -1,5 +1,5 @@
 .container {
-    padding: var(--fs-h4);
+    padding: var(--fs-h5);
     width: 100%;
 }
 
@@ -40,10 +40,11 @@
     padding: var(--fs-h5);
     background-color: transparent;
 
-    color: var(--primary-color);
+    color: var(--text);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease-in-out;
+    text-shadow: 0 0 7px var(--secondary-color);
 }
 
 .viewMoreLink:hover {

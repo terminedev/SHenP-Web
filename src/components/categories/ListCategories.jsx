@@ -10,12 +10,11 @@ import { Loading } from 'components/ui/SVGs';
 import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 import listCategoriesStyles from 'styles/components/ListCategories.module.css';
 
-export default function ListCategories({
+export default memo(function ListCategories({
     category,
     allowFiltering = true,
     asynchronousFunction = async () => { },
 }) {
-
 
     // 1. Variables y Estado 
     const { nameCategory } = category;
@@ -66,6 +65,7 @@ export default function ListCategories({
             return (
                 <div
                     className="space-center"
+                    style={{ height: 'clamp(180px, 10vw + 150px, 270px)' }}
                     role="status"
                     aria-live="polite"
                     aria-label={`Cargando proyectos de ${nameCategory}`}
@@ -145,4 +145,4 @@ export default function ListCategories({
             )}
         </div>
     );
-};
+});

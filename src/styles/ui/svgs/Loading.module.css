@@ -1,5 +1,5 @@
 .svg {
-    width: 5rem;
+    width: clamp(60px, 5vw + 40px, 110px);
     height: auto;
     fill: var(--text);
     animation: heartbeat 1.5s ease-in-out infinite both;

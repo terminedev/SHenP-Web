@@ -25,7 +25,9 @@
 }
 
 .container {
-    position: relative;
+    position: fixed;
+    top: clamp(35px, 5vw + 20px, 70px);
+    right: 0;
     width: clamp(320px, 100vw - 50px, 500px);
     height: clamp(80dvh, 120dvh - 50vw, 100dvh);
     margin: 0 auto;

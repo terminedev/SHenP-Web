@@ -1,6 +1,6 @@
 .card {
-    width: clamp(270px, 100vw - 50px, 300px);
-    height: clamp(220px, 100vw - 100px, 270px);
+    width: clamp(200px, 10vw + 150px, 300px);
+    height: clamp(180px, 10vw + 150px, 270px);
 
     display: flex;
     flex-direction: column;
