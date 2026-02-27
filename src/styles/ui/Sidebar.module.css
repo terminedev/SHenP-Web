@@ -24,7 +24,7 @@
 
 
 .sidebar {
-    width: 400px;
+    width: clamp(320px, 5vw + 320px, 400px);
     height: 100%;
     border-right: 1px solid var(--text);
 
@@ -32,7 +32,7 @@
 
     animation: color-change-2x 2s linear infinite alternate both;
 
-    padding: 1rem;
+    padding: var(--fs-h5);
     box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
@@ -53,11 +53,11 @@
 
 @keyframes color-change-2x {
     0% {
-        background: #070607;
+        background: #46347a;
     }
 
     100% {
-        background: #0b152f;
+        background: #1e5c46;
     }
 }
 
@@ -78,7 +78,7 @@
 .nav {
     display: flex;
     flex-direction: column;
-    gap: .7rem;
+    gap: var(--fs-h5);
 }
 
 .nav h2 {
@@ -87,15 +87,16 @@
 
 .nav hr {
     border: 0;
-    border-top: 1px solid var(--borders-and-dividers);
+    border-top: 1px solid var(--text);
     width: 100%;
-    margin: 7px 0;
+    margin: var(--fs-h5) 0;
 }
 
 .nav p {
-    color: var(--secondary-color);
+    font-size: var(--fs-h4);
+    color: var(--information);
     text-transform: uppercase;
-    margin: .5rem .2rem;
+    margin-left: var(--fs-h5);
     font-weight: bold;
     text-decoration: underline;
 }
@@ -104,9 +105,12 @@
     color: var(--text);
     text-decoration: none;
     transition: all 0.2s;
+    margin-left: var(--fs-h5);
+    font-size: var(--fs-h4);
 }
 
 .link:hover {
-    color: var(--primary-color);
-    padding-left: 1rem;
+    color: var(--success);
+    text-shadow: 0 0 7px var(--text);
+    padding-left: var(--fs-h5);
 }
