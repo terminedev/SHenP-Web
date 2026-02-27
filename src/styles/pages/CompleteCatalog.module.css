@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    padding: 1rem;
+    padding: var(--fs-h5);
     animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
 }
 
@@ -17,14 +17,14 @@
 }
 
 .header {
-    padding: 1rem 0px;
+    padding: var(--fs-h5) 0px;
 }
 
 .nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: var(--fs-h5);
     flex-wrap: wrap;
 }
 
@@ -37,6 +37,7 @@
     text-transform: capitalize;
     transition: all 0.3s ease;
     background-color: transparent;
+    font-size: var(--fs-h4);
 }
 
 .active,
@@ -46,12 +47,10 @@
     transform: translateY(-7px);
 }
 
-
 .divider {
     border: 0;
     height: 1px;
     background: linear-gradient(to right, transparent, #d1d5db, transparent);
-    margin: .3rem 0;
 }
 
 .main {
