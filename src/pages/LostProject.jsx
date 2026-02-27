@@ -41,6 +41,8 @@ export default function LostProject() {
         fetchProjects();
     }, []);
 
+    // Cambiar el título de la pestaña
+    document.title = `Proyectos perdidos | Series Hechas en Paint`;
 
     return (
         <section

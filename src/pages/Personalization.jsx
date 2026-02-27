@@ -1,8 +1,11 @@
+// Librería
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
+
+// Estilos
 import personalizationStyles from "styles/pages/Personalization.module.css";
 
-// --- IMPORTACIONES DE FONDOS ---
+// Fondos
 import defaultBg from "assets/default-customization/background-web.png";
 import academiaMagicaBg from "assets/customization/funds/academia-magica-bg.png";
 import bratalyBg from "assets/customization/funds/brataly-bg.png";
@@ -16,20 +19,20 @@ import spaceCarrotsBg from "assets/customization/funds/space-carrots-bg.png";
 import theCrystalBg from "assets/customization/funds/the-crystal-bg.png";
 import nuevoHorizonteBg from "assets/customization/funds/un-nuevo-horizonte-bg.png";
 
-// --- IMPORTACIONES DE LOGOS ---
+// Logos
 import defaultLogo from "assets/default-customization/web-lg.png";
+import clasicoLg from "assets/customization/logos/logo-clasico.png";
+import clasicoNuevaGenLg from "assets/customization/logos/logo-clasico-nueva-generacion.png";
 import elementalPowersLg from "assets/customization/logos/elemental-powers-lg.png";
 import glitchWarLg from "assets/customization/logos/glitch-war-lg.png";
-import clasicoNuevaGenLg from "assets/customization/logos/logo-clasico-nueva-generacion.png";
-import clasicoLg from "assets/customization/logos/logo-clasico.png";
 import novaLg from "assets/customization/logos/nova-lg.png";
 import octubre2020Lg from "assets/customization/logos/octubre-2020-lg.png";
 import powerArcadeLg from "assets/customization/logos/power-arcade-lg.png";
 import theBrothersLg from "assets/customization/logos/the-brothers-lg.png";
 
-// --- ARREGLOS DE OPCIONES ---
+// Opciones de fondo
 const backgroundOptions = [
-    { value: defaultBg, label: "Universos" },
+    { value: defaultBg, label: "Universos (Por defecto)" },
     { value: academiaMagicaBg, label: "Academia Mágica" },
     { value: bratalyBg, label: "Brataly" },
     { value: entreMundosBg, label: "Entre Mundos" },
@@ -44,19 +47,19 @@ const backgroundOptions = [
 ];
 
 const logoOptions = [
-    { value: defaultLogo, label: "Logo Web 2026" },
+    { value: defaultLogo, label: "Logo Web 2026 (Por defecto)" },
+    { value: clasicoLg, label: "Clásico" },
+    { value: clasicoNuevaGenLg, label: "Clásico Nueva Generación" },
     { value: elementalPowersLg, label: "Elemental Powers" },
     { value: glitchWarLg, label: "Glitch War" },
-    { value: clasicoNuevaGenLg, label: "Clásico Nueva Generación" },
-    { value: clasicoLg, label: "Clásico" },
     { value: novaLg, label: "Nova" },
     { value: octubre2020Lg, label: "Octubre 2020" },
     { value: powerArcadeLg, label: "Power Arcade" },
     { value: theBrothersLg, label: "The Brothers" },
 ];
 
-// --- COMPONENTE SELECT PERSONALIZADO ---
-const ImageSelect = ({ options, value, name, onChange }) => {
+// Componente select personalizado 
+const ImageSelect = ({ options, value, name, onChange, id }) => {
     const [isOpen, setIsOpen] = useState(false);
     const selectedOption = options.find(opt => opt.value === value) || options[0];
 
@@ -65,33 +68,68 @@ const ImageSelect = ({ options, value, name, onChange }) => {
         setIsOpen(false);
     };
 
+    // Soporte para teclado en el botón principal
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+        } else if (e.key === "Escape") {
+            setIsOpen(false);
+        }
+    };
+
     return (
         <div className={personalizationStyles.selectWrapper}>
-            {/* Botón que muestra la opción seleccionada */}
+
+            {/* Botón (Combobox) */}
             <div
+                id={id}
+                role="combobox"
+                aria-expanded={isOpen}
+                aria-haspopup="listbox"
+                aria-controls={`${id}-listbox`}
+                tabIndex={0}
                 onClick={() => setIsOpen(!isOpen)}
+                onKeyDown={handleKeyDown}
                 className={personalizationStyles.selectButton}
             >
                 <img
                     src={selectedOption.value}
-                    alt={selectedOption.label}
+                    alt=""
+                    aria-hidden="true"
                     className={personalizationStyles.thumbnail}
                 />
                 <span>{selectedOption.label}</span>
             </div>
 
-            {/* Lista desplegable */}
+            {/* Lista desplegable (Listbox) */}
             {isOpen && (
-                <ul className={personalizationStyles.dropdownList}>
-                    {options.map((option, index) => (
+                <ul
+                    id={`${id}-listbox`}
+                    role="listbox"
+                    aria-activedescendant={selectedOption.label.replace(/\s+/g, '-')}
+                    className={personalizationStyles.dropdownList}
+                >
+                    {options.map((option) => (
                         <li
-                            key={index}
+                            key={option.value}
+                            id={option.label.replace(/\s+/g, '-')}
+                            role="option"
+                            aria-selected={value === option.value}
+                            tabIndex={0}
                             onClick={() => handleSelect(option.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    handleSelect(option.value);
+                                }
+                            }}
                             className={personalizationStyles.dropdownItem}
                         >
                             <img
                                 src={option.value}
-                                alt={option.label}
+                                alt=""
+                                aria-hidden="true"
                                 className={personalizationStyles.thumbnail}
                             />
                             <span>{option.label}</span>
@@ -103,14 +141,17 @@ const ImageSelect = ({ options, value, name, onChange }) => {
     );
 };
 
-// --- COMPONENTE PRINCIPAL ---
 export default function Personalization() {
     const { theme, setTheme } = useOutletContext();
 
+    // Manejar el cambio de personalización
     const handleChange = (e) => {
         const { name, value } = e.target;
         setTheme(prev => ({ ...prev, [name]: value }));
     };
+
+    // Cambiar el título de la pestaña
+    document.title = `Personalización | Series Hechas en Paint`;
 
     return (
         <section className={personalizationStyles.container}>
@@ -118,8 +159,11 @@ export default function Personalization() {
 
             {/* Opción 1: Fondo */}
             <div className={personalizationStyles.formGroup}>
-                <label className={personalizationStyles.label}>Estilo del Fondo</label>
+                <label htmlFor="bgImage-select" className={personalizationStyles.label}>
+                    Estilo del Fondo
+                </label>
                 <ImageSelect
+                    id="bgImage-select"
                     options={backgroundOptions}
                     value={theme.bgImage || defaultBg}
                     name="bgImage"
@@ -129,10 +173,11 @@ export default function Personalization() {
 
             {/* Opción 2: Opacidad */}
             <div className={personalizationStyles.formGroup}>
-                <label className={personalizationStyles.label}>
+                <label htmlFor="opacity-range" className={personalizationStyles.label}>
                     Opacidad del Fondo: {theme.opacity}
                 </label>
                 <input
+                    id="opacity-range"
                     type="range"
                     name="opacity"
                     min="0"
@@ -141,13 +186,19 @@ export default function Personalization() {
                     value={theme.opacity}
                     onChange={handleChange}
                     className={personalizationStyles.rangeInput}
+                    aria-valuemin={0}
+                    aria-valuemax={1}
+                    aria-valuenow={theme.opacity}
                 />
             </div>
 
             {/* Opción 3: Logo */}
             <div className={personalizationStyles.formGroup}>
-                <label className={personalizationStyles.label}>Estilo del Logo</label>
+                <label htmlFor="logo-select" className={personalizationStyles.label}>
+                    Estilo del Logo
+                </label>
                 <ImageSelect
+                    id="logo-select"
                     options={logoOptions}
                     value={theme.logo || defaultLogo}
                     name="logo"

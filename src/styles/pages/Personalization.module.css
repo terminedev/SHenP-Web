@@ -1,7 +1,6 @@
 .container {
-    max-width: 700px;
     width: 100%;
-    padding: 1rem;
+    padding: var(--fs-h5);
     margin: 0 auto;
     text-align: center;
     animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
@@ -20,11 +19,18 @@
 }
 
 .heading {
-    margin-bottom: 2rem;
+    margin: var(--fs-h4) 0;
+    font-weight: 800;
+    font-size: var(--fs-h3);
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    text-shadow: 0 0 7px var(--secondary-color);
 }
 
 .formGroup {
-    margin-bottom: 1rem;
+    margin: var(--fs-h1) 0;
+    border-top: 1px solid var(--text);
 }
 
 .label {
@@ -35,7 +41,6 @@
 
 .rangeInput {
     width: 100%;
-    max-width: 300px;
     cursor: pointer;
 }
 
@@ -47,11 +52,11 @@
 
 .selectButton {
     border: 1px solid var(--borders-and-dividers);
-    padding: 7px;
+    padding: var(--fs-h5);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: var(--fs-h5);
     border-radius: 7px;
     background-color: var(--background);
     color: var(--color);
@@ -65,8 +70,9 @@
 }
 
 .thumbnail {
-    width: 5rem;
-    height: 5rem;
+    width: 30%;
+    aspect-ratio: 1/1;
+    height: auto;
     object-fit: cover;
     border-radius: 7px;
     flex-shrink: 0;
@@ -80,7 +86,7 @@
     padding: 0;
     list-style: none;
     border: 1px solid var(--borders-and-dividers);
-    max-height: 300px;
+    max-height: 400px;
     overflow-y: auto;
     background-color: var(--background);
     z-index: 10;

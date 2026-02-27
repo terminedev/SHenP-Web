@@ -116,8 +116,6 @@ Exe World
 Logos
 Fondos
 
-
-##Que no se hagan tantos fetch
 ##Agregar una galería
 
 
