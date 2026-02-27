@@ -116,6 +116,8 @@ Exe World
 Logos
 Fondos
 
-##Usar clamp
+
+##Que no se hagan tantos fetch
 ##Agregar una galería
+
 

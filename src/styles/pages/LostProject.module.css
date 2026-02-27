@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: var(--fs-h5);
     animation: slide-in-fwd-center .4s cubic-bezier(.25, .46, .45, .94) both;
 }
 
@@ -20,22 +20,23 @@
 
 .header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin: var(--fs-h4) 0;
 }
 
 .header h2 {
-    font-weight: 400;
+    margin: var(--fs-h4) 0;
+    font-weight: 800;
     font-size: var(--fs-h2);
-    margin-bottom: 0.5rem;
     color: var(--text);
     text-transform: uppercase;
-    text-decoration: underline;
     letter-spacing: 7px;
+    text-shadow: 0 0 7px var(--secondary-color);
 }
 
 .header p {
-    color: var(--primary-color);
-    font-size: 1.1rem;
+    color: var(--var);
+    font-size: var(--fs-h4);
+    text-shadow: 0 0 7px var(--secondary-color);
 }
 
 .projectList {
@@ -44,16 +45,16 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: var(--fs-h5);
 }
 
 .projectCard {
-    height: 500px;
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: var(--fs-h5);
     background: var(--background);
-    padding: 2rem;
+    padding: var(--fs-h5);
     overflow: hidden;
 }
 
@@ -65,7 +66,7 @@
     flex: 1;
     width: 100%;
     height: 100%;
-    height: 300px;
+    aspect-ratio: 16/9;
 
     background-color: var(--background);
     background-image: url('assets/no-image-bg.png');
@@ -82,18 +83,18 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 16/9;
 }
 
 .detailsContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
     max-height: 100%;
 }
 
 .title {
-    font-size: var(--fs-h3);
+    font-size: var(--fs-h4);
     margin-bottom: .7rem;
     color: var(--success);
     text-shadow: 0 0 7px var(--secondary-color);
@@ -103,25 +104,26 @@
 .date,
 .catalog {
     margin: 0;
-    font-size: var(--fs-h6);
+    font-size: var(--fs-h5);
     color: var(--text);
 }
 
 .description {
-    margin-top: 1rem;
+    margin-top: var(--fs-h5);
     line-height: 1.6;
     color: var(--information);
     overflow-y: auto;
     min-height: 0;
-    padding-right: 0.5rem;
+    padding-right: var(--fs-h5);
     scrollbar-width: thin;
     scrollbar-color: var(--text) transparent;
+    font-size: var(--fs-h5);
 }
 
 .loading,
 .empty,
 .error {
-    padding: 1rem;
+    padding: var(--fs-h5);
     text-align: center;
 }
 
@@ -143,14 +145,10 @@
     .projectCard,
     .projectCard:nth-child(even) {
         flex-direction: column;
-        gap: 1.5rem;
-        height: auto;
-        padding: 1.5rem;
     }
 
     .imageContainer {
         width: 100%;
-        height: 250px;
         flex: none;
     }
 
@@ -158,9 +156,5 @@
         width: 100%;
         height: auto;
         flex: none;
-    }
-
-    .description {
-        max-height: 200px;
     }
 }

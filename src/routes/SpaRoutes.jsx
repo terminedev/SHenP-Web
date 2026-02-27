@@ -4,6 +4,7 @@ import { lazy } from "react";
 import Layout from 'components/ui/Layout';
 import Home from 'pages/Home';
 import Personalization from "pages/Personalization";
+import ScrollToTop from 'components/ui/ScrollToTop';
 
 const CompleteCatalog = lazy(() => import("pages/CompleteCatalog"));
 const LostProject = lazy(() => import("pages/LostProject"));
@@ -11,8 +12,10 @@ const ProjectTemplate = lazy(() => import("pages/ProjectTemplate"));
 
 
 export default function SpaRoutes() {
+
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route element={<Layout />}>
 

@@ -1,94 +1,129 @@
+// Librería
 import { useState, useEffect } from "react";
+
+// Utilizades
 import { getProjectsLost } from 'utils/firebase/obtainings';
 import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 
-// Simplifiqué el nombre del import a "styles" para que el código sea más limpio
+// Estilos
 import styles from 'styles/pages/LostProject.module.css';
 
 export default function LostProject() {
+
+    // Datos asíncronos obtenidos. 
     const [asynchronousData, setAsynchronousData] = useState({
-        lostProyect: [],
-        isLoading: false,
+        lostProject: [],
+        isLoading: true,
         error: null,
     });
 
-    useEffect(() => {
-        const getProyects = async () => {
-            try {
-                setAsynchronousData({ lostProyect: [], isLoading: true, error: null });
-                const lostProyect = await getProjectsLost();
-                setAsynchronousData({ lostProyect: lostProyect, isLoading: false, error: null });
-            } catch (error) {
-                setAsynchronousData({ lostProyect: [], isLoading: false, error: error });
-            }
-        }
+    const { lostProject, isLoading, error } = asynchronousData;
 
-        getProyects();
+    // Se obtiene los proyectos perdidos. 
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const projects = await getProjectsLost();
+                setAsynchronousData({
+                    lostProject: projects,
+                    isLoading: false,
+                    error: null
+                });
+            } catch (error) {
+                setAsynchronousData({
+                    lostProject: [],
+                    isLoading: false,
+                    error: error
+                });
+            }
+        };
+
+        fetchProjects();
     }, []);
 
-    const { lostProyect, isLoading, error } = asynchronousData;
 
     return (
-        <section className={styles.container}>
-            <div className={styles.header}>
-                <h2>Proyectos perdidos</h2>
+        <section
+            className={styles.container}
+            aria-labelledby="lost-projects-title"
+        >
+            <header className={styles.header}>
+                <h2 id="lost-projects-title">Proyectos perdidos</h2>
                 <p>Homenaje a los proyectos que no pudieron ser recuperados.</p>
-            </div>
+            </header>
 
-            {isLoading
-                ?
-                (
+            {/* Estado: Cargando  */}
+            {isLoading && (
+                <div aria-live="polite" aria-busy="true">
                     <p className={`${styles.loading} space-center`}>Obteniendo proyectos...</p>
-                )
-                :
-                (
-                    lostProyect.length > 0
-                        ?
-                        (
-                            <ul className={styles.projectList}>
-                                {lostProyect.map((proyect) => (
-                                    <li key={proyect.id} className={styles.projectCard}>
+                </div>
+            )}
 
-                                        {/* Contenedor de la Imagen */}
-                                        <div className={styles.imageContainer}>
-                                            <img
-                                                src={proyect.coverArtUrl}
-                                                alt={`Portada del proyecto ${proyect.projectName ?? 'desconocido'}`}
-                                                className={styles.coverImage}
-                                            />
-                                        </div>
+            {/* Estado: Error */}
+            {error && (
+                <div aria-live="assertive"> {/* ARIA: Interrumpe para anunciar el error inmediatamente */}
+                    <p className={`${styles.error} space-center`}>
+                        {getFirebaseErrorMessage(error.message)}
+                    </p>
+                </div>
+            )}
 
-                                        {/* Contenedor de los Detalles */}
-                                        <div className={styles.detailsContainer}>
-                                            <h3 className={styles.title}>{proyect.projectName}</h3>
+            {/* Estado: Éxito (Con datos) */}
+            {!isLoading && !error && lostProject.length > 0 && (
+                <ul
+                    className={styles.projectList}
+                    aria-label="Lista de proyectos perdidos" // ARIA: Describe el propósito de esta lista
+                >
+                    {lostProject.map((project) => (
+                        <li key={project.idProyect} className={styles.projectCard}>
 
-                                            {proyect.authorName && (
-                                                <p className={styles.author}><strong>Autor:</strong> {proyect.authorName}</p>
-                                            )}
+                            {/* Contenedor de la Imagen */}
+                            <div className={styles.imageContainer}>
+                                <img
+                                    src={project.coverArtUrl}
+                                    alt={`Portada del proyecto ${project.projectName ?? 'desconocido'}`}
+                                    className={styles.coverImage}
+                                    loading="lazy"
+                                />
+                            </div>
 
-                                            {proyect.releaseDate && (
-                                                <p className={styles.date}><strong>Fecha:</strong> {proyect.releaseDate}</p>
-                                            )}
+                            {/* Contenedor de los Detalles */}
+                            <div className={styles.detailsContainer}>
+                                <h3 className={styles.title}>{project.projectName}</h3>
 
-                                            {proyect.catalog && (
-                                                <p className={styles.catalog}><strong>Catálogo:</strong> {proyect.catalog}</p>
-                                            )}
+                                {project.authorName && (
+                                    <p className={styles.author}>
+                                        <strong>Autor:</strong> {project.authorName}
+                                    </p>
+                                )}
 
-                                            {proyect.description && (
-                                                <p className={styles.description}>{proyect.description}</p>
-                                            )}
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        )
-                        :
-                        (
-                            !error && <p className={`${styles.empty} space-center`}>No hay proyectos perdidos</p>
-                        )
-                )}
+                                {project.releaseDate && (
+                                    <p className={styles.date}>
+                                        <strong>Fecha:</strong> {project.releaseDate}
+                                    </p>
+                                )}
 
-            {error && <p className={`${styles.error} space-center`}> {getFirebaseErrorMessage(error.message)}</p>}
+                                {project.catalog && (
+                                    <p className={styles.catalog}>
+                                        <strong>Catálogo:</strong> {project.catalog}
+                                    </p>
+                                )}
+
+                                {project.description && (
+                                    <p className={styles.description}>{project.description}</p>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
+
+            {/* Estado: Éxito (Sin datos) */}
+            {!isLoading && !error && lostProject.length === 0 && (
+                <div aria-live="polite">
+                    <p className={`${styles.empty} space-center`}>No hay proyectos perdidos</p>
+                </div>
+            )}
         </section>
     );
-};
+}

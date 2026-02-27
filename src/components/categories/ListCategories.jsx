@@ -88,7 +88,7 @@ export default memo(function ListCategories({
                     aria-label={`Listado de ${nameCategory}s`}
                 >
                     {proyects.map(proyect => (
-                        <li key={proyect.id} className={listCategoriesStyles.projectItem}>
+                        <li key={proyect.idProyect} className={listCategoriesStyles.projectItem}>
                             <ProjectCard proyect={proyect} />
                         </li>
                     ))}

@@ -25,6 +25,9 @@ export default function Home() {
         return fetchers;
     }, []);
 
+    // Cambiar el título de la pestaña
+    document.title = `Principal | Series Hechas en Paint`;
+
     return (
         <main className={homeStyle.mainContainer} role="main" aria-label="Página de inicio de Shenp">
 
