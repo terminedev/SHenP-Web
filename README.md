@@ -116,6 +116,7 @@ Exe World
 Logos
 Fondos
 
+##Corregir el filtrado y que no parpadee
 ##Agregar una galería
 
 

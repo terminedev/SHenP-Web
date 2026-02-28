@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    max-width: 700px;
     padding: var(--fs-h5);
     margin: 0 auto;
     text-align: center;
@@ -30,13 +31,13 @@
 
 .formGroup {
     margin: var(--fs-h1) 0;
-    border-top: 1px solid var(--text);
 }
 
 .label {
     display: block;
     margin-bottom: 7px;
     font-weight: bold;
+    font-size: var(--fs-h4);
 }
 
 .rangeInput {
@@ -44,15 +45,19 @@
     cursor: pointer;
 }
 
-
 .selectWrapper {
     position: relative;
     width: 100%;
 }
 
 .selectButton {
+    width: 100%;
+    height: clamp(70px, 5vw + 50px, 100px);
+    overflow: hidden;
+
     border: 1px solid var(--borders-and-dividers);
     padding: var(--fs-h5);
+    font-size: var(--fs-h5);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -70,7 +75,7 @@
 }
 
 .thumbnail {
-    width: 30%;
+    width: clamp(60px, 5vw + 40px, 100px);
     aspect-ratio: 1/1;
     height: auto;
     object-fit: cover;
@@ -91,6 +96,7 @@
     background-color: var(--background);
     z-index: 10;
     border-radius: 7px;
+    font-size: var(--fs-h5);
 
     scrollbar-width: thin;
     scrollbar-color: var(--text) transparent;
