@@ -118,5 +118,8 @@ Fondos
 
 ##Corregir el filtrado y que no parpadee
 ##Agregar una galería
+##Corregir las portadas de todos los proyectos
+##Agregar SEO al metada head
+##Hacer el readme
 
 

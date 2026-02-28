@@ -94,7 +94,7 @@ export default memo(function ListCategories({
                     ))}
                     <li className={listCategoriesStyles.viewMoreItem}>
                         <Link
-                            to={`/catalogo/${nameCategory}`}
+                            to={`/catalogo/${nameCategory}s`}
                             className={listCategoriesStyles.viewMoreLink}
                             aria-label={`Ver más proyectos de la categoría ${nameCategory}`}
                         >
