@@ -9,6 +9,7 @@ import { Loading } from 'components/ui/SVGs';
 // Utilidades y Estilos 
 import { getFirebaseErrorMessage } from 'utils/helpers/getFirebaseErrorMessage.js';
 import listCategoriesStyles from 'styles/components/ListCategories.module.css';
+import ListFilters from "components/filters/ListFilters";
 
 export default memo(function ListCategories({
     category,
@@ -63,15 +64,18 @@ export default memo(function ListCategories({
         // Estado 1: Cargando
         if (isLoading) {
             return (
-                <div
-                    className="space-center"
-                    style={{ height: 'clamp(180px, 10vw + 150px, 270px)' }}
-                    role="status"
-                    aria-live="polite"
-                    aria-label={`Cargando proyectos de ${nameCategory}`}
-                >
-                    <Loading />
-                </div>
+                <>
+                    {allowFiltering && < ListFilters disabled={true} />}
+                    <div
+                        className="space-center"
+                        style={{ height: 'clamp(180px, 10vw + 150px, 270px)' }}
+                        role="status"
+                        aria-live="polite"
+                        aria-label={`Cargando proyectos de ${nameCategory}`}
+                    >
+                        <Loading />
+                    </div>
+                </>
             );
         }
 
