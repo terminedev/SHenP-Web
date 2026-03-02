@@ -11,5 +11,5 @@
 }
 
 .gridItem {
-    flex: 0 1 200px;
+    flex: 0 1 clamp(120px, 15vw + 50px, 300px);
 }

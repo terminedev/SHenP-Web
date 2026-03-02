@@ -15,6 +15,7 @@ import Load from 'components/ui/Load';
 const CompleteCatalog = lazy(() => import("pages/CompleteCatalog"));
 const LostProject = lazy(() => import("pages/LostProject"));
 const ProjectTemplate = lazy(() => import("pages/ProjectTemplate"));
+const Gallery = lazy(() => import("pages/Gallery"));
 
 export default function SpaRoutes() {
     return (
@@ -39,7 +40,12 @@ export default function SpaRoutes() {
                             <Route index element={<Navigate to={"/"} replace />} />
                             <Route path=":idProyect" element={<ProjectTemplate />} />
                         </Route>
+
+                        {/* Proyectos Perdidos */}
                         <Route path="/proyectos-perdidos" element={<LostProject />} />
+
+                        {/* Galería */}
+                        <Route path="/galeria" element={<Gallery />} />
 
                         {/* Personalización */}
                         <Route path="/personalizacion" element={<Personalization />} />

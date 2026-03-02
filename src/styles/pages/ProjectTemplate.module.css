@@ -257,7 +257,7 @@
     background: none;
     border: none;
     color: white;
-    font-size: var(--fs-h4);
+    font-size: var(--fs-h1);
     cursor: pointer;
     margin: var(--fs-h4);
 }

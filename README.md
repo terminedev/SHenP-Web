@@ -117,7 +117,6 @@ Logos
 Fondos
 
 
-##Que las categorias tengan el titulo y el subtitulo
 ##Agregar una galería
 ##Agregar contenido de Ferxo animations
 ##Corregir las portadas de todos los proyectos
