@@ -8,6 +8,15 @@
     font-size: var(--fs-h2);
     margin-bottom: var(--fs-h5);
     color: var(--text);
+    text-shadow: 0 0 7px var(--secondary-color);
+    font-style: italic;
+}
+
+.infoCategory {
+    font-size: var(--fs-h4);
+    color: var(--text);
+    margin: var(--fs-h5) 0;
+    text-shadow: 0 0 7px var(--secondary-color);
 }
 
 .projectList {

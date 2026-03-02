@@ -18,7 +18,7 @@ export default memo(function ListCategories({
 }) {
 
     // 1. Variables y Estado 
-    const { nameCategory } = category;
+    const { nameCategory, infoCategory } = category;
     const categoryId = `category-title-${nameCategory.replace(/\s+/g, '-').toLowerCase()}`;
 
     const [asynchronousData, setAsynchronousData] = useState({
@@ -135,6 +135,7 @@ export default memo(function ListCategories({
             >
                 {`${nameCategory}s`}
             </h2>
+            <p className={listCategoriesStyles.infoCategory}>{infoCategory}</p>
 
             {renderContent()}
 
