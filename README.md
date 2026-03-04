@@ -8,6 +8,8 @@ Actúa como un archivo centralizado para series, cómics, libros y videojuegos c
 rescatando incluso aquellos proyectos que hoy se consideran *Lost Media*.
 Este grupo se creó originalmente con el fin de exhibir y apoyar obras desarrolladas íntegramente en Paint.
 
+**Link**: https://shenp-web.vercel.app/
+
 
 ## Características Principales
 
