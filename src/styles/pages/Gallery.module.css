@@ -27,6 +27,7 @@
     text-transform: uppercase;
     letter-spacing: 7px;
     text-shadow: 0 0 7px var(--secondary-color);
+    text-align: center;
 }
 
 .selectInput {
