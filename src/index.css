@@ -64,7 +64,7 @@
   --fs-h2: clamp(1.1rem, 0.7rem + 1.2vw, 1.5rem);
   --fs-h3: clamp(1rem, 0.7rem + 0.8vw, 1.3rem);
   --fs-h4: clamp(0.9rem, 0.6rem + 0.5vw, 1.1rem);
-  --fs-h5: clamp(0.75rem, 0.5rem + 0.3vw, 0.9rem);
+  --fs-h5: 0.9rem;
   --fs-h6: 0.6rem;
 }
 

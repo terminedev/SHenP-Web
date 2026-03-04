@@ -1,125 +1,111 @@
-### 🎨 1. Identidad y Concepto
+# Series hechas en Paint Web
 
-* **Nombre del Sitio:** Proyecto Shenp.
-* **Propósito:** Archivo digital y plataforma de acceso a los proyectos de la comunidad "Series hechas en Paint" (SHENP).
-* **Eslogan/Espíritu:** "10 años haciendo historias. Dibujamos por pasión."
+**10 años haciendo historias. Dibujamos por pasión.**
 
----
-
-### 🗺️ 2. Mapa del Sitio (Navegación)
-
-#### **A. Home (Página Principal)**
-
-#### **B. Categorías (El Catálogo)**: 
-Secciones dedicadas para filtrar el contenido según el formato:
-1. **Series:** (Series episódicas, cortometrajes, animaciones).
-2. **Cómics:** (Webcómics, tiras cómicas, novelas gráficas).
-3. **Libros:** (Obras literarias, guiones, historias escritas).
-4. **Juegos:** (Videojuegos completos, minijuegos, experiencias interactivas).
-
-#### **C. ¿Quiénes Somos? (About)**
-* **Texto Oficial:**
-> "10 años haciendo historias. Series hechas en Paint, dibujamos por pasión. Entre amigos, forjamos mundos desde la imaginación, donde la creatividad y la diversión se entrelazan en series, juegos, cómics, entre otros medios originales. ¡Bienvenido a Shenp!"
-
-#### **D. Proyectos Perdidos (Lost Media)**
-> "Homenaje a los proyectos perdidos que no pudieron ser recuperados."
----
-
-### 📄 3. Plantillas de Contenido (Fichas Técnicas)
-
-Aquí se define qué información debe tener cada página individual.
-
-#### **Plantilla: "Proyecto Activo"**
-Cada vez que entras a un juego, serie o cómic, verás:
-
-* **Cabecera:** Logotipo y Portada del proyecto.
-* **Información Clave:**
-* **Nombre del proyecto.**
-* **Autor** (con link a su perfil).
-* **Fecha de lanzamiento.**
-* **Género.**
-* **Sinopsis:** Descripción detallada de la trama o mecánica.
-* **Visuales:** Galería de imágenes (screenshots, arte conceptual).
-* **Acción:** **Link al proyecto** (Jugar, Leer, Ver).
+**SHenP Web** es una plataforma dedicada a la preservación y difusión del legado artístico de la
+comunidad "Series hechas en Paint" (SHenP).
+Actúa como un archivo centralizado para series, cómics, libros y videojuegos creados por una comunidad indie,
+rescatando incluso aquellos proyectos que hoy se consideran *Lost Media*.
+Este grupo se creó originalmente con el fin de exhibir y apoyar obras desarrolladas íntegramente en Paint.
 
 
-#### **Plantilla: "Proyecto Perdido"**
-Versión reducida para la sección Lost Media:
+## Características Principales
 
-* **Visual:** Portada (si existe) o imagen por defecto ("No Signal").
-* **Info:** Nombre, Autor y Fecha de lanzamiento (aproximada).
-* **Descripción:** De qué trataba y estado actual de la búsqueda.
-
----
-
-### ⚙️ 4. Funcionalidades Técnicas (UI/UX)
-
-Herramientas que mejoran la experiencia del usuario en la web.
-
-* **🔍 Buscador Avanzado:**
-* **Estilo:** "Tipo Steam".
-* **Comportamiento:** Al escribir, despliega un rectángulo con resultados que incluyen la **portada pequeña + nombre**, permitiendo una identificación visual rápida.
-
-* **🎨 Personalización (Theme Switcher):**
-* Panel de control para el usuario.
-* **Opciones:**
-* Cambiar imagen de Fondo (Background).
-* Ajustar Opacidad del fondo (para mejorar lectura).
-* Cambiar Logotipo de la página (quizás logos retro de la comunidad).
+* **Catálogo Multiformato:** Clasificación detallada de proyectos en Series, Cómics, Libros y Juegos para una navegación intuitiva.
+* **Buscador Inteligente:** Sistema de búsqueda avanzada con previsualización dinámica de portadas y títulos en tiempo real.
+* **Sección Lost Media:** Un archivo con estética técnica dedicado a la memoria y registro de proyectos no recuperados o fragmentados.
+* **Personalización (UX/UI):** Panel de control para el usuario que permite cambiar fondos, ajustar la opacidad de lectura y alternar entre los distintos logotipos históricos de la comunidad.
+* **Sistema de Filtros Avanzado:** 
+    **Por Estado:** Visualización clara de obras (Finalizado, En Emisión, Lost Media, Cancelado).
+    **Por Género:** Clasificación temática precisa (Terror, Suspenso, Entretenimiento, Acción, etc.).
+* **Galería de Alta Resolución:** Espacio exclusivo con contenido visual oficial y material promocional disponible para descarga en máxima fidelidad.
+* **Legado de Shenp:** Una sección dedicada a la reflexión sobre los orígenes, la evolución y la filosofía detrás del proyecto.
 
 
+## Stack Tecnológico
 
-### 📋 Ficha Técnica Maestra (Actualizada)
-
-0. **idProyect | ID del Proyecto:** Título oficial.
-1. **projectNameSearch | Nombre del Proyecto para la búsqueda:** Título oficial.
-2. **projectName | Nombre del Proyecto:** Título oficial.
-3. **status | Estado:** *[NUEVO]* Define la situación actual del proyecto.
-4. **logoUrl | Logotipo:** Imagen del título (PNG transparente).
-5. **coverArtUrl | Portada (Key Art):** Imagen principal vertical u horizontal.
-6. **introUrl | MiniPortada (Key Art):** Imagen mini vertical u horizontal.
-7. **description | Descripción:** Sinopsis de la trama o mecánica.
-8. **authorName | Autor:** Nombre/Nick del creador.
-9. **authorProfileUrl | Link al Perfil del Autor:** Enlace interno o redes sociales.
-10. **releaseDate | Fecha de Lanzamiento:** Día/Mes/Año (o solo Año).
-11. **genre | Género:** Acción, Aventura, Comedia, Terror, etc.
-12. **catalog | Catálogo:** Juego, serie, comic, etc...
-13. **gallery | Galería:** Lista de imágenes (screenshots, arte, bocetos).
-14. **projectUrl | Link al Proyecto:** URL de descarga, video de YouTube, lector online, etc. *(Este campo puede ocultarse si el estado es "Lost Media" o "Próximamente").*
-
-* **Etiquetas Visuales (Badges):** Podrías mostrar una pequeña etiqueta de color sobre la portada en el menú principal.
-* 🟢 **completed | Finalizado:** Verde.
-* 🔵 **ongoing | En Emisión:** Azul.
-* ⚫ **lostMedia | Lost Media:** Gris o Negro (con efecto de "glitch" quizás).
-* 🔴 **cancelled | Cancelado:** Rojo.
-
-* **Distintos Filtros:**
-rpg
-aventura
-comedia
-drama
-duelos
-terror
-suspenso
-supervivencia
-guerra
-entretenimiento
-demo
-informativo 
-explícito
-acción
-desafío
-podcast
-cortometraje
-
-* **Galería: (imageUrl (string), seccion (string))**
-Nova
-Exe World
-Logos
-Fondos
+* **Frontend:** HTML5 | React JS 
+* **Estilos:** CSS / CSS Modules
+* **SEO:** Optimización de Meta-tags para visibilidad en buscadores.
+* **Gestión de Datos:** Firebase Firestore: Base de datos NoSQL para el almacenamiento del contenido recompilado y ordenado por Gastón Términe. 
 
 
-##Agregar SEO al metada head
-##Hacer el readme
+## Estructura de Datos (Ficha Técnica)
+
+Cada proyecto dentro de la plataforma se rige por una **Ficha Técnica Maestra** que garantiza la integridad de la información:
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `idProyect` | `string` | **ID del Proyecto:** Título oficial e identificador único. |
+| `projectNameSearch` | `string` | **Búsqueda:** Título optimizado para el motor de búsqueda. |
+| `projectName` | `string` | **Nombre:** Título oficial mostrado en la interfaz. |
+| `status` | `string` | **Estado:** Situación actual del proyecto. |
+| `logoUrl` | `url` | **Logotipo:** Imagen del título en formato PNG transparente. |
+| `coverArtUrl` | `url` | **Portada:** Imagen principal (Key Art) vertical u horizontal. |
+| `introUrl` | `url` | **MiniPortada:** Imagen miniatura para previsualizaciones. |
+| `description` | `string` | **Sinopsis:** Resumen detallado de la trama o mecánicas. |
+| `authorName` | `string` | **Autor:** Nombre o Nick del creador original. |
+| `authorProfileUrl` | `url` | **Perfil:** Enlace interno o redes sociales del autor. |
+| `releaseDate` | `date` | **Fecha:** Día/Mes/Año o solo Año de lanzamiento. |
+| `genre` | `array` | **Género:** Etiquetas de filtro (RPG, Terror, Acción, etc.). |
+| `catalog` | `string` | **Catálogo:** Categoría (Juego, Serie, Cómic, etc.). |
+| `gallery` | `array` | **Galería:** Lista de imágenes (Screenshots, arte, bocetos). |
+| `projectUrl` | `url` | **Link:** Enlace de acceso/descarga (Oculto en `lostMedia`). |
+
+### Estados (`status`)
+
+Para mantener la coherencia visual, los estados se definen mediante la siguiente nomenclatura:
+
+* 🟢 **`finalizado`**: El proyecto ha sido finalizado.
+* 🔵 **`en-emisión`**: El proyecto se encuentra actualmente en desarrollo o emisión.
+* ⚫ **`lost-media`**: Proyecto no disponible o paradero desconocido (el `projectUrl` se inhabilita).
+* 🔴 **`cancelado`**: El desarrollo del proyecto ha sido detenido definitivamente.
+
+
+## Mapa del Sitio
+
+1. **Home (Landing Page):** El corazón del sitio. Presenta las últimas novedades, anuncios destacados y transmite el espíritu vibrante de la comunidad. Incluye el Buscador Inteligente, un sistema avanzado con previsualización dinámica de portadas y títulos en tiempo real para un acceso inmediato. 
+![home-landing-page](src/assets/readme/home-landing-page.png)
+
+2. **Catálogo Multiformato (Categorías):** Navegación intuitiva mediante una clasificación detallada. Permite explorar el contenido según su naturaleza: 
+* **Series** (Animación, Live Action, etc.)
+* **Cómics** (Novelas gráficas y tiras)
+* **Libros** (Material escrito y lore)
+* **Juegos** (Interactivos y fan-games)
+![catalogo-multiformato](src/assets/readme/catalogo-multiformato.png)
+
+3. **Buscador Inteligente:** Para una búsqueda de precisión, el usuario puede segmentar el catálogo bajo dos criterios principales: 
+* **Por Estado** Visualización del estatus de la obra **(Finalizado, En Emisión, Lost Media, Cancelado)**.
+* **Por Género** Clasificación temática (Terror, Suspenso, Entretenimiento, Acción, etc.).
+![buscador-inteligente](src/assets/readme/buscador-inteligente.png)
+
+4. **Sección Lost Media:** Un archivo con estética técnica y nostálgica dedicado a la memoria y registro de proyectos no recuperados, fragmentados o eliminados. Incluye descripciones breves sobre su origen y el estado actual de su búsqueda.
+![seccion-lost-media](src/assets/readme/seccion-lost-media.png)
+
+5. **Galería de Alta Resolución:** Espacio exclusivo dedicado al contenido visual oficial. Ofrece material promocional y arte conceptual disponible para descarga en máxima fidelidad (High-Res).
+![galeria-de-alta-resolucion](src/assets/readme/galeria-de-alta-resolucion.png)
+
+6. **Legado de Shenp (Reflexión):** Una sección narrativa y profunda dedicada a la reflexión sobre los orígenes, la evolución y la filosofía detrás del proyecto. Explora el "por qué" de la comunidad y su impacto a través del tiempo.
+![legado-de-shenp](src/assets/readme/legado-de-shenp.png)
+
+7. **Panel de Personalización (UX/UI):** Área de control donde el usuario toma el mando de su experiencia visual: 
+* Cambio de fondos y temas.
+* Ajuste de **opacidad de lectura** para mayor comodidad.
+* Selector de **logotipos históricos**, permitiendo alternar la identidad visual del sitio según las distintas eras de la comunidad.
+![panel-de-personalización](src/assets/readme/panel-de-personalización.png)
+
+## Créditos
+
+* **Desarrollo:** Gastøn ♱érmine - 2026
+* **Comunidad:** Series hechas en Paint (SHENP).
+* **Agradecimientos:** A todos los artistas que durante una década han forjado mundos desde la imaginación.
+
+
+
+
+
+
+
+
 
 

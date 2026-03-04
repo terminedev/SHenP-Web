@@ -56,10 +56,12 @@ export default function Home() {
                         donde la creatividad y la diversión se entrelazan en series, juegos,
                         cómics, entre otros medios originales. ¡Bienvenido a Shenp!
                         <br /> <br />
-                        Recopilación de proyectos independientes realizados entre 2016 y 2018.
-                        Este grupo se creó originalmente con el fin de exhibir y apoyar obras desarrolladas
-                        íntegramente en Paint.
-
+                        Es una plataforma dedicada a la preservación y difusión del legado artístico de la
+                        comunidad "Series hechas en Paint" (SHenP).
+                        Actúa como un archivo centralizado para series, cómics, libros y videojuegos creados por una comunidad indie,
+                        rescatando incluso aquellos proyectos que hoy se consideran *Lost Media*.
+                        <br /> <br />
+                        Este grupo se creó originalmente con el fin de exhibir y apoyar obras desarrolladas íntegramente en Paint.
                     </p>
 
                     <a

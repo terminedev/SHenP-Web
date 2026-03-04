@@ -20,7 +20,7 @@ const getInitialTheme = () => {
     const saved = localStorage.getItem("shenp-theme");
     return saved ? JSON.parse(saved) : {
         bgImage: defaultBg,
-        opacity: 0.5,
+        opacity: 0.4,
         logo: defaultLogo
     };
 };

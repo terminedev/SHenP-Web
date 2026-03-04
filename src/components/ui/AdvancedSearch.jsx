@@ -122,7 +122,7 @@ export default function AdvancedSearch({ onClose = () => { } }) {
                     {!isLoading && results.length > 0 && (
                         <ul className={advancedSearchStyles.resultsList} role="listbox">
                             {results.map((proyect) => (
-                                <li key={proyect.id} className={advancedSearchStyles.resultItem} role="option">
+                                <li key={proyect.idProyect} className={advancedSearchStyles.resultItem} role="option">
                                     <Link
                                         to={`/proyecto/${proyect.idProyect}`}
                                         className={advancedSearchStyles.resultLink}
