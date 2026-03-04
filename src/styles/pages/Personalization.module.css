@@ -22,7 +22,7 @@
 .heading {
     margin: var(--fs-h4) 0;
     font-weight: 800;
-    font-size: var(--fs-h3);
+    font-size: var(--fs-h2);
     color: var(--text);
     text-transform: uppercase;
     letter-spacing: 7px;

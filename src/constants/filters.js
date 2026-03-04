@@ -13,5 +13,7 @@ export const FILTERS = [
     "informativo",
     "explícito",
     "acción",
-    "desafío"
+    "desafío",
+    "podcast",
+    "cortometraje"
 ];

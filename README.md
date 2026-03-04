@@ -109,6 +109,8 @@ informativo
 explícito
 acción
 desafío
+podcast
+cortometraje
 
 * **Galería: (imageUrl (string), seccion (string))**
 Nova
@@ -117,11 +119,8 @@ Logos
 Fondos
 
 
-##Agregar una galería
-##Agregar la linea de tiempo de Exe World
-##Agregar reflexión de Shenp de dani pacheco.
-##Agregar las series de Dani sobre Exe World y Nova.    
-##Agregar contenido de Ferxo animations
+##Agregar iframe contenido de Ferxo animations
+##Agregar sección reflexión de Shenp de dani pacheco.
 ##Corregir las portadas de todos los proyectos
 ##Agregar SEO al metada head
 ##Hacer el readme

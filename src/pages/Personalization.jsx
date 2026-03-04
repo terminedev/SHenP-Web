@@ -18,6 +18,7 @@ import mollyBg from "assets/customization/funds/molly-bg.png";
 import spaceCarrotsBg from "assets/customization/funds/space-carrots-bg.png";
 import theCrystalBg from "assets/customization/funds/the-crystal-bg.png";
 import nuevoHorizonteBg from "assets/customization/funds/un-nuevo-horizonte-bg.png";
+import granAmigo from "assets/customization/funds/gran-amigo.png";
 
 // Logos
 import defaultLogo from "assets/default-customization/web-lg.png";
@@ -44,6 +45,7 @@ const backgroundOptions = [
     { value: spaceCarrotsBg, label: "Space Carrots" },
     { value: theCrystalBg, label: "The Crystal" },
     { value: nuevoHorizonteBg, label: "Un Nuevo Horizonte" },
+    { value: granAmigo, label: "Exe y Dani" },
 ];
 
 const logoOptions = [

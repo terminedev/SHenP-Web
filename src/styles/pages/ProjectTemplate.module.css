@@ -233,7 +233,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: zoom-out;
 }
 
 .modalContent {
