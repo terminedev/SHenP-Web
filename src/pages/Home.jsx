@@ -90,6 +90,35 @@ export default function Home() {
                     ))}
                 </ul>
             </section>
+
+
+            {/* Sección especial  */}
+            <figure
+                aria-labelledby="caption-ferxo"
+                className={homeStyle.figureContainer}
+            >
+                <iframe
+                    src="https://www.youtube.com/embed/Odaeaho0CQs?si=6Jh3Sl5Qg6FkYsXF"
+                    title="Reproductor de vídeo: SHENP BALL SUPER (DB Super Intro Parodia)"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    className={homeStyle.videoIframe}
+                ></iframe>
+                <figcaption
+                    id="caption-ferxo"
+                    className={homeStyle.captionContainer}
+                >
+                    <strong className={homeStyle.captionTitle}>
+                        SHENP BALL SUPER (DB Super Intro Parodia)
+                    </strong>
+                    <br />
+                    <span className={homeStyle.captionDescription}>
+                        Vídeo parodia de nuestro amigo FerXo Animations!
+                    </span>
+                </figcaption>
+            </figure>
+
         </main>
     );
 }

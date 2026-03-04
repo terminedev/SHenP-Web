@@ -151,3 +151,36 @@
         align-items: center;
     }
 }
+
+.figureContainer {
+    padding: var(--fs-h5);
+    margin: var(--fs-h4) auto;
+
+    width: 100%;
+    max-width: 500px;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--fs-h5);
+}
+
+.videoIframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    border: 7px solid var(--borders-and-dividers);
+    transition: all .3s;
+}
+
+.videoIframe:hover {
+    box-shadow: 0 0 7px var(--primary-color);
+}
+
+.captionContainer {
+    color: var(--text);
+    text-shadow: 0 0 7px var(--secondary-color);
+}
