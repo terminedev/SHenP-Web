@@ -169,10 +169,10 @@
 }
 
 .videoIframe {
-    width: 100%;
+    width: clamp(250px, 15vw + 100px, 400px);
     height: auto;
     aspect-ratio: 16/9;
-    border: 7px solid var(--borders-and-dividers);
+    border: 1px solid var(--borders-and-dividers);
     transition: all .3s;
 }
 

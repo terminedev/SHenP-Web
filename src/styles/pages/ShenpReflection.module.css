@@ -1,0 +1,87 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--fs-h5);
+}
+
+.header {
+    text-align: center;
+    margin: var(--fs-h4) 0;
+}
+
+.mainTitle {
+    margin: var(--fs-h4) 0;
+    font-weight: 800;
+    font-size: var(--fs-h2);
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    text-shadow: 0 0 7px var(--secondary-color);
+}
+
+.intro {
+    font-size: var(--fs-h4);
+    line-height: 1.6;
+    text-shadow: 0 0 7px var(--secondary-color);
+}
+
+.videoGrid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-h5);
+}
+
+.card {
+    text-align: center;
+    padding: var(--fs-h5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--fs-h5);
+    text-shadow: 0 0 7px var(--secondary-color);
+}
+
+.cardTitle {
+    font-size: var(--fs-h4);
+    font-weight: 700;
+    margin: 0;
+}
+
+.iframe {
+    border-radius: 7px;
+    border: 1px solid var(--secondary-color);
+    width: clamp(250px, 15vw + 100px, 400px);
+    aspect-ratio: 16/9;
+    flex-shrink: 0;
+}
+
+.cardText {
+    font-size: var(--fs-h5);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-align: start;
+        align-items: flex-start;
+        gap: var(--fs-h5);
+    }
+
+    .cardTitle {
+        flex: 0 0 100%;
+    }
+
+    .cardText {
+        flex: 1;
+    }
+}

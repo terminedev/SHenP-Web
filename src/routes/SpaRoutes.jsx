@@ -16,6 +16,7 @@ const CompleteCatalog = lazy(() => import("pages/CompleteCatalog"));
 const LostProject = lazy(() => import("pages/LostProject"));
 const ProjectTemplate = lazy(() => import("pages/ProjectTemplate"));
 const Gallery = lazy(() => import("pages/Gallery"));
+const ShenpReflection = lazy(() => import("pages/ShenpReflection"));
 
 export default function SpaRoutes() {
     return (
@@ -49,6 +50,9 @@ export default function SpaRoutes() {
 
                         {/* Personalización */}
                         <Route path="/personalizacion" element={<Personalization />} />
+
+                        {/* Reflexión ShenP */}
+                        <Route path="/reflexion-shenp" element={<ShenpReflection />} />
 
                         {/* Captura de 404 (Not Found) */}
                         <Route path="*" element={<Navigate to={'/'} replace />} />

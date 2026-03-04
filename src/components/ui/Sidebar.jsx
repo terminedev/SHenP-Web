@@ -13,7 +13,7 @@ export default function Sidebar({ onClose = () => { }, isOpen = true }) {
         <div
             className={`${sidebarStyles.overlay} ${isOpen ? sidebarStyles.open : ''}`}
             onClick={onClose}
-            aria-hidden={!isOpen}
+            inert={!isOpen}
         >
 
             {/* Sidebar */}
@@ -64,6 +64,7 @@ export default function Sidebar({ onClose = () => { }, isOpen = true }) {
                         <Link to="/proyectos-perdidos" className={sidebarStyles.link} onClick={onClose}>Proyectos Perdidos</Link>
                         <Link to="/galeria" className={sidebarStyles.link} onClick={onClose}>Galería</Link>
                         <Link to="/personalizacion" className={sidebarStyles.link} onClick={onClose}>Personalización</Link>
+                        <Link to="/reflexion-shenp" className={sidebarStyles.link} onClick={onClose}>Reflexión ShenP</Link>
                     </div>
                 </nav>
 
