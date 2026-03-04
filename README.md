@@ -119,8 +119,6 @@ Logos
 Fondos
 
 
-##Agregar sección reflexión de Shenp de dani pacheco.
-##Corregir las portadas de todos los proyectos
 ##Agregar SEO al metada head
 ##Hacer el readme
 
