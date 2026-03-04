@@ -118,6 +118,9 @@ Fondos
 
 
 ##Agregar una galería
+##Agregar la linea de tiempo de Exe World
+##Agregar reflexión de Shenp de dani pacheco.
+##Agregar las series de Dani sobre Exe World y Nova.    
 ##Agregar contenido de Ferxo animations
 ##Corregir las portadas de todos los proyectos
 ##Agregar SEO al metada head
