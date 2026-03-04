@@ -26,7 +26,7 @@ export default function Home() {
     }, []);
 
     // Cambiar el título de la pestaña
-    document.title = `Principal | Series Hechas en Paint`;
+    document.title = `Página Principal | Series hechas en Paint`;
 
     return (
         <main className={homeStyle.mainContainer} role="main" aria-label="Página de inicio de Shenp">
@@ -55,6 +55,11 @@ export default function Home() {
                         Entre amigos, forjamos mundos desde la imaginación,
                         donde la creatividad y la diversión se entrelazan en series, juegos,
                         cómics, entre otros medios originales. ¡Bienvenido a Shenp!
+                        <br /> <br />
+                        Recopilación de proyectos independientes realizados entre 2016 y 2018.
+                        Este grupo se creó originalmente con el fin de exhibir y apoyar obras desarrolladas
+                        íntegramente en Paint.
+
                     </p>
 
                     <a

@@ -31,7 +31,7 @@ export default function Gallery() {
 
 
     // Cambiar el título de la pestaña (Side Effect seguro)
-    document.title = `Galería | Series Hechas en Paint`;
+    document.title = `Galería | Series hechas en Paint`;
 
 
     // Obtención de los datos de la galería

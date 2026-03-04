@@ -1,6 +1,9 @@
 import styles from 'styles/pages/ShenpReflection.module.css';
 
 export default function ShenpReflection() {
+
+    document.title = `Reflexión ShenP | Series hechas en Paint`;
+
     return (
         <section className={styles.container} aria-labelledby="shenp-reflection-title">
             <div className={styles.header}>

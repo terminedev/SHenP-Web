@@ -42,7 +42,7 @@ export default function LostProject() {
     }, []);
 
     // Cambiar el título de la pestaña
-    document.title = `Proyectos perdidos | Series Hechas en Paint`;
+    document.title = `Proyectos perdidos | Series hechas en Paint`;
 
     return (
         <section

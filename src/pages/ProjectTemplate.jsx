@@ -56,9 +56,9 @@ export default function ProjectTemplate() {
     // Cambiar el título de la pestaña
     useEffect(() => {
         if (proyect) {
-            document.title = `${proyect.projectName} | Series Hechas en Paint`;
+            document.title = `${proyect.projectName} | Series hechas en Paint`;
         } else {
-            document.title = `Proyecto... | Series Hechas en Paint`;
+            document.title = `Proyecto... | Series hechas en Paint`;
         }
     }, [proyect]);
 

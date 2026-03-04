@@ -153,7 +153,7 @@ export default function Personalization() {
     };
 
     // Cambiar el título de la pestaña
-    document.title = `Personalización | Series Hechas en Paint`;
+    document.title = `Personalización | Series hechas en Paint`;
 
     return (
         <section className={personalizationStyles.container}>

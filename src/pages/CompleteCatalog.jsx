@@ -35,7 +35,7 @@ export default function CompleteCatalog() {
     }
 
     // Cambiar el título de la pestaña
-    document.title = `Sección ${nameCategory} | Series Hechas en Paint`;
+    document.title = `Sección ${nameCategory} | Series hechas en Paint`;
 
     return (
 
